@@ -7,4 +7,41 @@ cd into APP_NAME
 npm start
 
 
+________________________
+
+Go to GitHub:
+
+CLICK* create new repo
+
+name it the same as the previous APP_NAME (don't need README of license)
+
+_______________________
+
+Back the the terminal:
+
+
+git init 
+
+git add README.md
+
+git commit -m 'initial commit'
+
+git branch -M master
+
+git remote add origin (PASTE THE CLONE URL ON GITHUB)
+
+git push -u origin master
+
+
+_________________________
+
+
+
+
+
+
+
+
+
+
 
