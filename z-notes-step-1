@@ -1,0 +1,10 @@
+CD documents
+
+npx create-react-app APP_NAME
+
+cd into APP_NAME
+
+npm start
+
+
+
