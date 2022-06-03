@@ -1,6 +1,6 @@
+Deployed to:
 
-cd documents
-npm create-react-app stoic-quote-app-fe
+https://thestoics.netlify.app/
 
 
 
