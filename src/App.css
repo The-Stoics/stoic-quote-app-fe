@@ -1,0 +1,48 @@
+* {
+    max-width: 100%;
+    position: absolute;
+    width: 1920px;
+    height: 1080px;
+    background: linear-gradient(180deg, #000000 0%, rgba(20, 130, 177, 0.96) 110.32%);
+    scrollbar-color: red yellow;
+}
+
+.app {
+    /* position: absolute; */
+    /* width: 871px; */
+    /* height: 203px; */
+
+    font-family: 'roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 128px;
+    line-height: 158.52%;
+
+    display: flex;
+    /* align-items: center; */
+    text-align: center;
+    justify-content: center;
+    letter-spacing: 0.1em;
+    color: #ededed;
+    text-shadow: 0px 4px 27px #50006C;
+}
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #d6dee1;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #a8bbbf;
+}
