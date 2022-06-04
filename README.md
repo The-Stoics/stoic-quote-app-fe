@@ -1,6 +1,9 @@
-Deployed to:
+ - [Deployment:](https://thestoics.netlify.app/)
 
-https://thestoics.netlify.app/
+ - [Figma prototype:](https://www.figma.com/proto/1ilZj7gIRRZy6RAZNFXHTp/Stoics?page-id=0%3A1&node-id=13%3A78&viewport=-661%2C522%2C0.71&scaling=min-zoom)
+
+
+_____________
 
 
 
