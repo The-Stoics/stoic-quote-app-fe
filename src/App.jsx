@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-// import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom';
-
 import './App.css';
 import axios from 'axios';
-
+import React, { useEffect, useState } from 'react';
+// import { Switch, Route } from 'react-router-dom'; // , useParams ???????
+import QuoteCards from './components/QuoteCards';
+import Form from './components/Form';
 
 
 
@@ -13,17 +13,6 @@ const App = () => {
 
 
 
-    // const [quoteId, setQuoteId] = useState({});
-    // const params = useParams();
-    // console.log('#######################', params.id);
-    // useEffect(() => {
-    //     console.log('BEFORE AXIOS GET ID')
-    //     axios.get(`https://thestoics.herokuapp.com/quotes/${params.id}`)
-    //         .then(res => console.log('@@@@@@@@ getting id')) //  setQuoteId(res.data))
-    //         .catch(err => console.log(err))
-    // }, []);
-
-
 
     useEffect(() => { // GET array of all quotes from the API
         axios
@@ -31,11 +20,13 @@ const App = () => {
             .then(res => setQuotes(res.data))
             .catch(err => console.log(err))
     }, []);
-    // console.log('quotes', quotes);
+    console.log('quotes STATE =', quotes);
 
     return (
-        <div>
-            <h1 className='app'>THE STOICS</h1>
+        <div className='app'>
+            <h1> THE STOICS </h1>
+            {/* <QuoteCards /> */}
+            < Form />
 
 
             <h3>
@@ -48,8 +39,7 @@ const App = () => {
                 ))}
             </h3>
 
-
-        </div >
+        </div>
     );
 }
 
