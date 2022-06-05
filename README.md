@@ -3,10 +3,127 @@
  - [Figma prototype:](https://www.figma.com/proto/1ilZj7gIRRZy6RAZNFXHTp/Stoics?page-id=0%3A1&node-id=13%3A78&viewport=-661%2C522%2C0.71&scaling=min-zoom)
 
 
-_____________
+
+  - My API [https://thestoics.herokuapp.com/quotes](https://thestoics.herokuapp.com/quotes)
+
+
+| Method | URL              | Description                           |
+| ------ | ---------------- | -------------------------------------------------------------------------- |
+| GET    | /quotes          | Returns an array of all the quotes objects contained in the database.      |
+| GET    | /quotes/:id      | Returns the quote object with the specified `id`.                          |
+| POST   | /quotes          | Creates a quote using the information sent inside the `request body`.      |
+| DELETE | /quotes/:id      | Removes the quote with the specified `id`.                                 |
+| PUT    | /quotes/:id      | Update & return quote with the specified `id` from the `request body`      |
 
 
 
+
+
+
+
+
+ ___________________________________________________________
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+____________________________________________________________
+
+
+```js
+
+
+  // Gets all of the data and sets it to state.
+  useEffect(()=>{
+    axios
+    .get('http://localhost:5000/api/movies')
+    .then(res => setMovies(res.data))
+    .catch(err => console.log(err))
+  }, []);
+
+
+
+  const deleteMovie = (id) => {
+    axios
+      .delete(`http://localhost:5000/api/movies/${id}`, id)
+      .then(res => console.log(res))
+      .catch(err => console.log(err, "err in deleteMovie"))
+  }
+
+
+____
+
+
+
+function MyComponent() {
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [items, setItems] = useState([]);
+
+  // Note: the empty deps array [] means
+  // this useEffect will run once
+  // similar to componentDidMount()
+  useEffect(() => {
+    fetch("https://api.example.com/items")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          setItems(result);
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't allow
+        // exceptions from actual bugs in components.
+        (error) => {
+          setIsLoaded(true);
+          setError(error);
+        }
+      )
+  }, [])
+
+   if (error) <div>Error: {error.message}</div>;
+   else if (!isLoaded) <div>Loading...</div>;
+   else {
+    return (
+      <ul>
+        {items.map(item => (
+          <li key={item.id}>
+            {item.name} {item.price}
+          </li>
+        ))}
+      </ul>
+    );
+  }
+}
+
+
+
+
+
+
+```
+
+
+_____________________________________________________________
 
 ### `npm start`
 

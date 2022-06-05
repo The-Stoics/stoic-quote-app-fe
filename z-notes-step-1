@@ -44,7 +44,10 @@ Created a new SRC folder with an `index.js`, `index.css`, and an `App.js` inside
 
 
 
+________________________
 
+
+npm i axios
 
 
 
