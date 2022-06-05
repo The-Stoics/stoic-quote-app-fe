@@ -9,11 +9,11 @@
 
 | Method | URL              | Description                           |
 | ------ | ---------------- | -------------------------------------------------------------------------- |
-| GET    | /quotes          | Returns an array of all the quotes objects contained in the database.      |
+| GET    | /quotes          | Returns an array of all the quote objects contained in the database.       |
 | GET    | /quotes/:id      | Returns the quote object with the specified `id`.                          |
 | POST   | /quotes          | Creates a quote using the information sent inside the `request body`.      |
 | DELETE | /quotes/:id      | Removes the quote with the specified `id`.                                 |
-| PUT    | /quotes/:id      | Update & return quote with the specified `id` from the `request body`      |
+| PUT    | /quotes/:id      | Update & return quote with the specified `id` from the `request body`.     |
 
 
 
