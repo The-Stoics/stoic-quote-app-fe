@@ -1,48 +1,50 @@
 * {
     max-width: 100%;
-    position: absolute;
-    width: 1920px;
-    height: 1080px;
-    background: linear-gradient(180deg, #000000 0%, rgba(20, 130, 177, 0.96) 110.32%);
-    scrollbar-color: red yellow;
+    /* background: #d1d1d1; */
+    box-sizing: border-box;
+    padding: 10px;
+    margin: 10px;
+    scroll-behavior: smooth;
 }
 
-.app {
-    /* position: absolute; */
-    /* width: 871px; */
-    /* height: 203px; */
-
-    font-family: 'roboto', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 128px;
-    line-height: 158.52%;
-
+.card-container {
+    /* margin: 0 auto; */
+    color: rgb(51, 51, 51);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: #b2b0b8;
     display: flex;
-    /* align-items: center; */
-    text-align: center;
     justify-content: center;
-    letter-spacing: 0.1em;
-    color: #ededed;
-    text-shadow: 0px 4px 27px #50006C;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 800px;
+    min-width: 400px;
+    box-sizing: border-box;
+    padding: 10px;
+    margin: 10px;
+    border: 2px solid rgb(51, 24, 114);
 }
+
+
+
 
 /* custom scrollbar */
 ::-webkit-scrollbar {
-    width: 20px;
+    width: 1.2rem;
 }
 
 ::-webkit-scrollbar-track {
-    background-color: transparent;
+    /* background-color: transparent; */
+    background-color: blueviolet;
+
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #d6dee1;
+    background-color: #00192a;
     border-radius: 20px;
     border: 6px solid transparent;
     background-clip: content-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background-color: #a8bbbf;
+    background-color: #baf3ff;
 }
