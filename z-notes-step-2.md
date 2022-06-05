@@ -1,0 +1,1 @@
+Had to refactor the index.js due to React 18 changes.
