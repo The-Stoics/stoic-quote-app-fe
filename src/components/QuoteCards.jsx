@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 
-export default function QuoteCard() { // Will take props from form.
+export default function QuoteCard() {
     const [quotes, setQuotes] = useState([]);
 
     useEffect(() => { // GET array of all quotes from the API
@@ -13,7 +13,18 @@ export default function QuoteCard() { // Will take props from form.
     }, [quotes]);
     // console.log('quotes STATE =', quotes);
 
-    // Each card needs a delete button.
+
+    const deleteQuote = (id) => {
+        axios
+            .delete(`https://thestoics.herokuapp.com/quotes/${id}`)
+            .then(res => {
+                console.log(res);
+                setQuotes(quotes.filter(quote => quote._id !== id))
+            })
+            .catch(err => console.log(err));
+    };
+
+
     return (
         <>
             <h3>
@@ -22,6 +33,7 @@ export default function QuoteCard() { // Will take props from form.
                         <div>{quote.author}</div>
                         <div>{quote.source}</div>
                         <div>{quote.quote}</div>
+                        <button onClick={() => deleteQuote(quote.id)}>Delete</button>
                     </div>
                 ))}
             </h3>
