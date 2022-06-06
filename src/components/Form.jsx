@@ -1,36 +1,33 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-// import QuoteCards from './QuoteCards';
-
-
-
 
 
 export default function From() {
     const [formData, setFormData] = useState({
-        // id: '',   // Might not need this.
         author: '',
         source: '',
         quote: ''
     });
 
-    const changeHandler = e => {
+    const changeHandler = (e) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value
         });
     };
 
-    // clear form on submit
-    const submitHandler = e => {
+
+    const submitHandler = (e) => {
         e.preventDefault();
         axios
             .post('https://thestoics.herokuapp.com/quotes', formData)
-            .then(res => console.log(res))
+            .then(res => {
+                console.log(res);
+                e.target.reset()
+            })
             .catch(err => console.log(err));
     };
 
-    // need to clear form after submit.
 
     return (
         <section>
@@ -65,8 +62,6 @@ export default function From() {
                 </label>
 
                 <button>SUBMIT</button>
-
-                {/* <QuoteCards formData={formData} /> */}
 
             </form>
         </section>
