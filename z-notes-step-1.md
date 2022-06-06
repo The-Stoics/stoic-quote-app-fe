@@ -51,6 +51,10 @@ npm i axios
 
 
 
+npm i react-router-dom    (handles routing)
+
+
+
 
 
 
