@@ -33,35 +33,29 @@ export default function From() {
         <section>
             <form className="labels" onSubmit={submitHandler}>
 
-                <label>
-                    <p>Author</p>
-                    <input
-                        name="author"
-                        type="text"
-                        onChange={changeHandler}
-                    />
-                </label>
+                {/* <label>Author</label> */}
+                <input
+                    name="author"
+                    type="text"
+                    onChange={changeHandler}
+                />
 
-                <label>
-                    <p>Source</p>
-                    <input
-                        name="source"
-                        type="text"
-                        onChange={changeHandler}
-                    />
-                </label>
+                {/* <label>Source</label>
+                <input
+                    name="source"
+                    type="text"
+                    onChange={changeHandler}
+                />
 
-                <label>
-                    <p>Quote</p>
-                    <input
-                        className="quote-input"
-                        name="quote"
-                        type="textarea"
-                        onChange={changeHandler}
-                    />
-                </label>
+                <label>Quote</label>
+                <input
+                    className="quote-input"
+                    name="quote"
+                    type="textarea"
+                    onChange={changeHandler}
+                /> */}
 
-                <button>SUBMIT</button>
+                <button>Add</button>
 
             </form>
         </section>

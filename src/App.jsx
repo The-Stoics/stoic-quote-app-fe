@@ -12,7 +12,7 @@ export default function App() {
     return (
         <div className='app'>
 
-            <h1> THE STOICS </h1>
+            {/* <h1> THE STOICS </h1> */}
 
             <Form />
             <QuoteCards />
@@ -20,3 +20,5 @@ export default function App() {
         </div>
     );
 };
+
+
