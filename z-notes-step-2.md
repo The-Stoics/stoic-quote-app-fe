@@ -20,8 +20,10 @@ export default function App() {
     const [time, setTime] = useState('');
     const [taskList, setTaskList] = useState([]);
 
+
+
+
     const addTask = (e) => {
-        // e.preventDefault();
         setTaskList([...taskList, { task: taskName, time: time }]);
         setTaskName('');
         setTime('');

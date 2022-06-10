@@ -13,7 +13,6 @@ export default function QuoteCard() {
     }, [quotes.length]);
     console.log('quotes STATE =', quotes);
 
-    // needs to re-render on submit
 
 
     const deleteQuote = (id) => {

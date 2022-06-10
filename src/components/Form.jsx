@@ -24,6 +24,11 @@ export default function From() {
             .then(res => {
                 console.log(res);
                 e.target.reset()
+                setFormData({
+                    author: '',
+                    source: '',
+                    quote: ''
+                })
             })
             .catch(err => console.log(err));
     };
@@ -40,7 +45,7 @@ export default function From() {
                     onChange={changeHandler}
                 />
 
-                {/* <label>Source</label>
+                <label>Source</label>
                 <input
                     name="source"
                     type="text"
@@ -53,7 +58,7 @@ export default function From() {
                     name="quote"
                     type="textarea"
                     onChange={changeHandler}
-                /> */}
+                />
 
                 <button>Add</button>
 
