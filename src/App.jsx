@@ -4,7 +4,6 @@ import './App.css';
 // import { Switch, Route } from 'react-router-dom'; // , useParams ???????
 // import QuoteCards from './components/QuoteCards';
 // import Form from './components/Form';
-{/* <h1> THE STOICS </h1>  */ }
 // <Form />
 // <QuoteCards /> 
 
@@ -70,6 +69,7 @@ export default function App() {
             <h1> THE STOICS </h1>
 
             <form className="labels" onSubmit={submitHandler}>
+
                 <label>Author</label>
                 <input
                     name="author"
