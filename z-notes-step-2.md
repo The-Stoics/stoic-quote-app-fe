@@ -11,3 +11,70 @@ Had to refactor the index.js due to React 18 changes.
 //         .then(res => console.log('@@@@@@@@ getting id')) //  setQuoteId(res.data))
 //         .catch(err => console.log(err))
 // }, []);
+
+
+
+```js
+export default function App() {
+    const [taskName, setTaskName] = useState('');
+    const [time, setTime] = useState('');
+    const [taskList, setTaskList] = useState([]);
+
+
+
+
+    const addTask = (e) => {
+        setTaskList([...taskList, { task: taskName, time: time }]);
+        setTaskName('');
+        setTime('');
+    };
+
+    return (
+        <div className='app'>
+
+            <label>Name</label>
+            <input
+                id="task"
+                type="text"
+                onChange={(e) => setTaskName(e.target.value)}
+            />
+
+            <label>Time</label>
+            <input
+                id="time"
+                type="text"
+                onChange={(e) => setTime(e.target.value)}
+            />
+
+            <button onClick={addTask}>Add</button>
+
+
+            {/* {taskList.map((task) => {
+                return (
+                    <Task taskName={task.task} time={task.time} />
+                );
+            })} */}
+
+            {[...taskList].reverse().map((task) => {
+                return (
+                    <p>{task.task}</p>
+                );
+            })}
+
+            {/* {taskList.slice(0).map((task) => {
+                return (
+                    <p>{task.task}</p>
+                );
+            })} */}
+
+            {[...taskList].reverse().map((task, id) => (
+                <div key={task}>
+                    {console.log(task)}
+                    <div>{task.task}</div>
+                    <div>{task.time}</div>
+                    {/* <button onClick={() => deleteQuote(quote.id)}>Delete</button> */}
+                </div>
+            ))}
+        </div>
+    );
+}

@@ -10,8 +10,9 @@ export default function QuoteCard() {
             .get('https://thestoics.herokuapp.com/quotes')
             .then(res => setQuotes(res.data))
             .catch(err => console.log(err))
-    }, [quotes]);
-    // console.log('quotes STATE =', quotes);
+    }, [quotes.length]);
+    console.log('quotes STATE =', quotes);
+
 
 
     const deleteQuote = (id) => {
@@ -19,7 +20,7 @@ export default function QuoteCard() {
             .delete(`https://thestoics.herokuapp.com/quotes/${id}`)
             .then(res => {
                 console.log(res);
-                setQuotes(quotes.filter(quote => quote._id !== id))
+                setQuotes(quotes.filter(quote => quote.id !== id))
             })
             .catch(err => console.log(err));
     };
@@ -27,8 +28,8 @@ export default function QuoteCard() {
 
     return (
         <>
-            <h3>
-                {quotes.reverse().map(quote => (
+            <h2>
+                {[...quotes].reverse().map(quote => (
                     <div className='card-container' key={quote.id}>
                         <div>{quote.author}</div>
                         <div>{quote.source}</div>
@@ -36,7 +37,7 @@ export default function QuoteCard() {
                         <button onClick={() => deleteQuote(quote.id)}>Delete</button>
                     </div>
                 ))}
-            </h3>
+            </h2>
         </>
     )
 };
