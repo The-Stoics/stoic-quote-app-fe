@@ -17,13 +17,6 @@ export default function App() {
         quote: ''
     });
 
-    const scrollUp = () => {
-        window.scrollTo({
-            top: 0,
-        })
-        console.log(window.scrollTo)
-    }
-
 
     const updateQuote = (quote) => {
         axios.put(`https://thestoics.herokuapp.com/quotes/${quote.id}`, quote)
@@ -34,7 +27,7 @@ export default function App() {
                     source: quote.source,
                     quote: quote.quote
                 })
-                scrollUp()
+                window.scrollTo({ top: 0, }) // Scrolls to top on edit click.
             })
             .then(() => {
                 deleteQuote(quote.id)
@@ -90,9 +83,9 @@ export default function App() {
 
     return (
         <div className='app'>
-            <h1>THE STOICS</h1>
+            <h1 className='title'>THE STOICS</h1>
 
-            <form className="labels" onSubmit={submitHandler}>
+            <form className="form" onSubmit={submitHandler}>
 
                 <input
                     value={formData.author}
@@ -133,7 +126,6 @@ export default function App() {
                     </div>
                 ))}
             </h2>
-            {/* <button onClick={() => scrollUp()}>oooooooo</button> */}
         </div>
     );
 };
