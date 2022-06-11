@@ -17,6 +17,14 @@ export default function App() {
         quote: ''
     });
 
+    const scrollUp = () => {
+        window.scrollTo({
+            top: 0,
+        })
+        console.log(window.scrollTo)
+    }
+
+
     const updateQuote = (quote) => {
         axios.put(`https://thestoics.herokuapp.com/quotes/${quote.id}`, quote)
             .then(res => {
@@ -26,6 +34,7 @@ export default function App() {
                     source: quote.source,
                     quote: quote.quote
                 })
+                scrollUp()
             })
             .then(() => {
                 deleteQuote(quote.id)
@@ -124,6 +133,7 @@ export default function App() {
                     </div>
                 ))}
             </h2>
+            {/* <button onClick={() => scrollUp()}>oooooooo</button> */}
         </div>
     );
 };
