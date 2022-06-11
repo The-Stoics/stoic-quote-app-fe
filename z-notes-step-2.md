@@ -1,5 +1,31 @@
 Had to refactor the index.js due to React 18 changes.
 
+TESTING: RTL & Jest
+Must install Jest, RTL come with create-react-app. 
+https://jestjs.io/docs/getting-started
+
+
+`npm install --save-dev jest`
+
+Dev Dep in package.json will now look like
+
+  "devDependencies": {
+    "@testing-library/react": "^13.3.0",
+    "jest": "^28.1.1"
+  }
+
+
+
+
+
+
+
+
+
+
+IGNORE BELOW. NOTES TO BE DELETED!
+// _____________________________________________
+
 
 // get by id code to delete*
 // const [quoteId, setQuoteId] = useState({});
@@ -78,3 +104,16 @@ export default function App() {
         </div>
     );
 }
+
+
+
+// expect(screen).getByRole('button', { name: /Add/i }).toBeEnabled()
+
+
+// test('On initial render', () => {
+//     render(<App />)
+//     // screen.debug() // console.log() the body of the DOM
+
+//     screen().getByText(/Add/i)
+
+// })

@@ -5,8 +5,7 @@ import './App.css';
 // import QuoteCards from './components/QuoteCards';
 // import Form from './components/Form';
 // <Form />
-// <QuoteCards /> 
-
+// <QuoteCards />
 
 
 
@@ -18,6 +17,22 @@ export default function App() {
         quote: ''
     });
 
+    const updateQuote = (quote) => {
+        axios.put(`https://thestoics.herokuapp.com/quotes/${quote.id}`, quote)
+            .then(res => {
+                console.log(res)
+                setFormData({
+                    author: quote.author,
+                    source: quote.source,
+                    quote: quote.quote
+                })
+            })
+            .then(() => {
+                deleteQuote(quote.id)
+            })
+            .catch(err => console.log(err));
+    }
+
     // Changes 'quotes' state:
     const deleteQuote = (id) => {
         axios
@@ -27,7 +42,7 @@ export default function App() {
                 setQuotes(quotes.filter(quote => quote.id !== id))
             })
             .catch(err => console.log(err));
-    };
+    }
 
 
     // Changes quotes state:
@@ -37,7 +52,7 @@ export default function App() {
             .then(res => setQuotes(res.data))
             .catch(err => console.log(err))
     }, [quotes.length]);
-    console.log('quotes STATE =', quotes);
+    // console.log('quotes STATE =', quotes);
 
     // Changes 'formData' state:
     const changeHandler = (e) => {
@@ -66,29 +81,32 @@ export default function App() {
 
     return (
         <div className='app'>
-            <h1> THE STOICS </h1>
+            <h1>THE STOICS</h1>
 
             <form className="labels" onSubmit={submitHandler}>
 
-                <label>Author</label>
                 <input
+                    value={formData.author}
                     name="author"
                     type="text"
+                    placeholder='Author'
                     onChange={changeHandler}
                 />
 
-                <label>Source</label>
                 <input
+                    value={formData.source}
                     name="source"
                     type="text"
+                    placeholder='Source'
                     onChange={changeHandler}
                 />
 
-                <label>Quote</label>
                 <input
+                    value={formData.quote}
                     className="quote-input"
                     name="quote"
                     type="textarea"
+                    placeholder='Quote'
                     onChange={changeHandler}
                 />
 
@@ -102,6 +120,7 @@ export default function App() {
                         <div>{quote.source}</div>
                         <div>{quote.quote}</div>
                         <button onClick={() => deleteQuote(quote.id)}>Delete</button>
+                        <button onClick={() => updateQuote(quote)}>Update</button>
                     </div>
                 ))}
             </h2>
