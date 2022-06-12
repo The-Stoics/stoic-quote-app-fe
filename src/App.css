@@ -1,39 +1,146 @@
-/* @font-face {
-    font-family: myFont;
-    src: url(font/clockwork.ttf);
-} */
-
-
-
 body {
-    background-color: #f0f0f0;
+    /* background-color: #f0f0f0; */
+    background: linear-gradient(179.97deg, #f1fcfc 0.03%, #eeeeee 70.52%);
+
+    min-width: 275px;
+
 }
 
 * {
     max-width: 100%;
     box-sizing: border-box;
-    /* padding: 10px; */
     scroll-behavior: smooth;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
-
-h1 {
-    font-size: 290%;
-    font-family: clockwork, Helvetica, Arial, sans-serif;
-}
-
-.title {
-    text-align: center;
-}
-
 
 .app {
     margin: auto;
     max-width: 800px;
 }
 
+h1 {
+    word-spacing: 1rem;
+    letter-spacing: 0.1rem;
+    text-align: center;
+    font-weight: 400;
+    font-size: 3rem;
+    font-family: Helvetica, sans-serif;
+    color: #444343;
+
+    /* font-family: 'Clockwork Free';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    letter-spacing: 0.1em;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10rem;
+    margin: auto;
+    background: linear-gradient(179.97deg, #4b4b4b 0.03%, #0e0c58 70.52%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text; */
+}
+
+button {
+    /* horizontal center */
+    align-items: center;
+    /* vertical center */
+    justify-content: center;
+    display: flex;
+    /* margin-top: 2rem; */
+    margin-right: 1rem;
+    margin-left: 1rem;
+    min-height: 2rem;
+    min-width: 4rem;
+    color: #1a1a1a;
+}
+
+.update-delete-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 2rem;
+    /* border: #1a1a1a 1px solid; */
+}
+
+
+
+
+
+
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    border-radius: 0.3rem;
+
+    font-size: 1.1rem;
+    font-weight: 400;
+    background: #b2b0b8;
+    max-width: 800px;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border: 2px solid rgb(126, 126, 126);
+}
+
+.card-text {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* border: #1a1a1a 1px solid; */
+    font-size: 18px;
+    font-weight: 500;
+    color: #242424;
+    background: #b2b0b8;
+    max-width: 800px;
+}
+
+/* Author and Source text */
+p {
+    margin-left: .6rem;
+    margin-right: .6rem;
+}
+
+
+
+.quote-text {
+    color: #1a1a1a;
+    width: 100%;
+    margin-right: 1.5rem;
+    margin-left: 1.5rem;
+    /* border: #1a1a1a 1px solid; */
+}
+
+
+
+
+
+
+
+input {
+    margin: 0.4rem;
+    background: #f8f8f8;
+}
+
+
+
+textarea {
+    min-height: 7rem;
+    min-width: 15rem;
+    background: #f8f8f8;
+}
+
+
 .form {
-    border-radius: 7px;
+    border-radius: 0.3rem;
     background-color: #b2b0b8;
     display: flex;
     flex-direction: column;
@@ -46,49 +153,13 @@ h1 {
     border: 2px solid rgb(126, 126, 126);
 }
 
-.card-container {
-    border-radius: 7px;
-    font-size: 18px;
-    font-weight: 400;
-    background: #b2b0b8;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    max-width: 800px;
-    padding: 1rem;
-    margin-bottom: 2rem;
-    border: 2px solid rgb(126, 126, 126);
-}
 
-
-.edit-delete {
-    display: flex;
-    margin-top: 2rem;
-    margin-right: 1rem;
-    margin-left: 1rem;
-}
-
-input {
-    margin: 0.4rem;
-}
-
-tb {
-    margin: 1rem;
-    font-weight: 500;
-}
-
-
-.quote-input {
-    min-height: 3rem;
-    min-width: 15rem;
-}
 
 
 
 /* custom scrollbar */
 ::-webkit-scrollbar {
-    width: 1.2rem;
+    width: 1rem;
 }
 
 ::-webkit-scrollbar-track {
@@ -98,7 +169,7 @@ tb {
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #00192a;
+    background-color: #38393a;
     border-radius: 20px;
     border: 6px solid transparent;
     background-clip: content-box;
@@ -107,5 +178,4 @@ tb {
 ::-webkit-scrollbar-thumb:hover {
     /* background-color: #baf3ff; */
     background-color: #ffffff;
-
 }
