@@ -48,12 +48,11 @@ button {
     /* vertical center */
     justify-content: center;
     display: flex;
-    /* margin-top: 2rem; */
     margin-right: 1rem;
     margin-left: 1rem;
     min-height: 2rem;
     min-width: 4rem;
-    color: #1a1a1a;
+    color: #494949;
 }
 
 .update-delete-buttons {
@@ -77,11 +76,11 @@ button {
 
     font-size: 1.1rem;
     font-weight: 400;
-    background: #b2b0b8;
+    background: #cecdd3;
     max-width: 800px;
     padding: 1rem;
     margin-bottom: 2rem;
-    border: 2px solid rgb(126, 126, 126);
+    border: 2px solid rgb(194, 194, 196);
 }
 
 .card-text {
@@ -93,7 +92,7 @@ button {
     font-size: 18px;
     font-weight: 500;
     color: #242424;
-    background: #b2b0b8;
+    background: #cecdd3;
     max-width: 800px;
 }
 
@@ -142,12 +141,12 @@ textarea {
     align-items: center;
     flex-wrap: wrap;
     border-radius: 0.3rem;
-    background-color: #b2b0b8;
+    background-color: #cecdd3;
     max-width: 800px;
     padding-top: 1.8rem;
     padding-bottom: 1.8rem;
     margin-bottom: 2rem;
-    border: 2px solid rgb(126, 126, 126);
+    border: 2px solid rgb(194, 194, 196);
 }
 
 
