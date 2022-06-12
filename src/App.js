@@ -124,6 +124,7 @@ export default function App() {
                         </div>
 
                         <p className='quote-text'>{quote.quote}</p>
+
                         <div className="update-delete-buttons">
                             <button onClick={() => deleteQuote(quote.id)}>Delete</button>
                             <button onClick={() => updateQuote(quote)}>Update</button>

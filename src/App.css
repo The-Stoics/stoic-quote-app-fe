@@ -1,5 +1,7 @@
 body {
-    background-color: #f0f0f0;
+    /* background-color: #f0f0f0; */
+    background: linear-gradient(179.97deg, #f1fcfc 0.03%, #eeeeee 70.52%);
+
     min-width: 275px;
 
 }
