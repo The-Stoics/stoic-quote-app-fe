@@ -83,7 +83,7 @@ export default function App() {
 
     return (
         <div className='app'>
-            <h1 className='title'>THE STOICS</h1>
+            <h1>THE STOICS</h1>
 
             <form className="form" onSubmit={submitHandler}>
 
@@ -103,9 +103,9 @@ export default function App() {
                     onChange={changeHandler}
                 />
 
-                <input
+                <textarea
                     value={formData.quote}
-                    className="quote-input"
+                    // className="quote-input"
                     name="quote"
                     type="textarea"
                     placeholder='Quote'
@@ -118,11 +118,15 @@ export default function App() {
             <div>
                 {[...quotes].reverse().map(quote => (
                     <div className='card-container' key={quote.id}>
-                        <tb>{quote.author}</tb>
-                        <tb>{quote.source}</tb>
-                        <div>{quote.quote}</div>
-                        <button className="edit-delete" onClick={() => deleteQuote(quote.id)}>Delete</button>
-                        <button className="edit-delete" onClick={() => updateQuote(quote)}>Update</button>
+                        <div className="card-text">
+                            <ul>{quote.author}</ul>
+                            <ul>{quote.source}</ul>
+                        </div>
+                        <ul className='quote'>{quote.quote}</ul>
+                        <div className="update-delete-buttons">
+                            <button onClick={() => deleteQuote(quote.id)}>Delete</button>
+                            <button onClick={() => updateQuote(quote)}>Update</button>
+                        </div>
                     </div>
                 ))}
             </div>
