@@ -115,18 +115,18 @@ export default function App() {
                 <button>Add</button>
             </form>
 
-            <h2>
+            <div>
                 {[...quotes].reverse().map(quote => (
                     <div className='card-container' key={quote.id}>
-                        <div>{quote.author}</div>
-                        <div>{quote.source}</div>
+                        <tb>{quote.author}</tb>
+                        <tb>{quote.source}</tb>
                         <div>{quote.quote}</div>
-                        <button onClick={() => deleteQuote(quote.id)}>Delete</button>
-                        <button onClick={() => updateQuote(quote)}>Update</button>
+                        <button className="edit-delete" onClick={() => deleteQuote(quote.id)}>Delete</button>
+                        <button className="edit-delete" onClick={() => updateQuote(quote)}>Update</button>
                     </div>
                 ))}
-            </h2>
-        </div>
+            </div>
+        </div >
     );
 };
 
