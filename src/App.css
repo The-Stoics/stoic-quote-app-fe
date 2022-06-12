@@ -1,5 +1,7 @@
 body {
     background-color: #f0f0f0;
+    min-width: 275px;
+
 }
 
 * {
@@ -7,6 +9,11 @@ body {
     box-sizing: border-box;
     scroll-behavior: smooth;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.app {
+    margin: auto;
+    max-width: 800px;
 }
 
 h1 {
@@ -40,7 +47,7 @@ button {
     /* vertical center */
     justify-content: center;
     display: flex;
-    margin-top: 2rem;
+    /* margin-top: 2rem; */
     margin-right: 1rem;
     margin-left: 1rem;
     min-height: 2rem;
@@ -52,12 +59,69 @@ button {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 1rem;
     margin-bottom: 1rem;
     margin-left: 1rem;
     margin-right: 1rem;
-    border: #1a1a1a 1px solid;
+    margin-top: 2rem;
+    /* border: #1a1a1a 1px solid; */
 }
+
+
+
+
+
+
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    border-radius: 0.3rem;
+
+    font-size: 1.1rem;
+    font-weight: 400;
+    background: #b2b0b8;
+    max-width: 800px;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border: 2px solid rgb(126, 126, 126);
+}
+
+.card-text {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* border: #1a1a1a 1px solid; */
+    font-size: 18px;
+    font-weight: 500;
+    color: #242424;
+    background: #b2b0b8;
+    max-width: 800px;
+}
+
+/* Author and Source text */
+p {
+    margin-left: .6rem;
+    margin-right: .6rem;
+}
+
+
+
+.quote-text {
+    color: #1a1a1a;
+    width: 100%;
+    margin-right: 1.5rem;
+    margin-left: 1.5rem;
+    /* border: #1a1a1a 1px solid; */
+}
+
+
+
+
+
+
 
 input {
     margin: 0.4rem;
@@ -65,12 +129,6 @@ input {
 }
 
 
-.quote-input {
-    margin: 0.4rem;
-    min-height: 3rem;
-    min-width: 15rem;
-
-}
 
 textarea {
     min-height: 7rem;
@@ -78,39 +136,6 @@ textarea {
     background: #f8f8f8;
 }
 
-
-ul {
-    margin: 1rem;
-    font-weight: 500;
-    color: #1a1a1a;
-    /* width: 100%; */
-    border: #1a1a1a 1px solid;
-}
-
-.card-text {
-    border-radius: 0.3rem;
-    font-size: 18px;
-    font-weight: 400;
-    background: #b2b0b8;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    flex-direction: row;
-    max-width: 800px;
-    padding: 1rem;
-    margin-bottom: 2rem;
-}
-
-.quote {
-    width: 100%;
-}
-
-
-.app {
-    margin: auto;
-    max-width: 800px;
-}
 
 .form {
     border-radius: 0.3rem;
@@ -126,20 +151,7 @@ ul {
     border: 2px solid rgb(126, 126, 126);
 }
 
-.card-container {
-    border-radius: 0.3rem;
-    font-size: 18px;
-    font-weight: 400;
-    background: #b2b0b8;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    max-width: 800px;
-    padding: 1rem;
-    margin-bottom: 2rem;
-    border: 2px solid rgb(126, 126, 126);
-}
+
 
 
 

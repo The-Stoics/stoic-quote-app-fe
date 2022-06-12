@@ -105,7 +105,6 @@ export default function App() {
 
                 <textarea
                     value={formData.quote}
-                    // className="quote-input"
                     name="quote"
                     type="textarea"
                     placeholder='Quote'
@@ -118,11 +117,13 @@ export default function App() {
             <div>
                 {[...quotes].reverse().map(quote => (
                     <div className='card-container' key={quote.id}>
+
                         <div className="card-text">
-                            <ul>{quote.author}</ul>
-                            <ul>{quote.source}</ul>
+                            <p>{quote.author}</p>
+                            <p>{quote.source}</p>
                         </div>
-                        <ul className='quote'>{quote.quote}</ul>
+
+                        <p className='quote-text'>{quote.quote}</p>
                         <div className="update-delete-buttons">
                             <button onClick={() => deleteQuote(quote.id)}>Delete</button>
                             <button onClick={() => updateQuote(quote)}>Update</button>
