@@ -4,8 +4,10 @@ body {
     min-width: 275px;
     /* upload background image */
     background-image: url("/src/r.avif");
-
-
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 * {
@@ -26,7 +28,7 @@ h1 {
     letter-spacing: 0.1rem;
     text-align: center;
     font-weight: 400;
-    font-size: 4rem;
+    font-size: 3.3rem;
     font-family: Helvetica, sans-serif;
     color: #444343;
 
@@ -186,9 +188,6 @@ textarea {
     margin-bottom: 2rem;
     border-radius: 0.3rem;
     /* border: 2px solid rgb(194, 194, 196); */
-
-    clip-path: polygon(0 22.00px, 11px 11px, 22.00px 0, calc(100% - 22.00px) 0, calc(100% - 11px) 11px, 100% 22.00px, 100% 100%, 0 100%);
-
 }
 
 
