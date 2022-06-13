@@ -41,19 +41,53 @@ h1 {
     background-clip: text; */
 }
 
-
+/* 
 button {
-    /* horizontal center */
     align-items: center;
-    /* vertical center */
     justify-content: center;
     display: flex;
     margin-right: 1rem;
     margin-left: 1rem;
-    min-height: 2rem;
-    min-width: 4rem;
-    color: #494949;
+    min-height: 2.3rem;
+    min-width: 5.3rem;
+    color: #686868;
+    border-radius: 25px;
+    background-color: #1a1a1a00;
+    border: 2px solid rgb(102, 100, 100)
+} */
+
+.btn {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    min-height: 2.3rem;
+    min-width: 5.3rem;
+    color: #686868;
+    border-radius: 25px;
+    background-color: #7dd45500;
+    border: .1rem solid rgb(102, 100, 100)
 }
+
+.hover:hover {
+    background-color: rgb(58, 58, 58);
+    color: #ebebeb;
+    border: .1rem solid rgb(58, 58, 58);
+}
+
+/* .submit-button {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    min-height: 2.3rem;
+    min-width: 7rem;
+    color: #494949;
+    border-radius: 25px;
+    border: none;
+} */
 
 .update-delete-buttons {
     display: flex;
@@ -73,7 +107,6 @@ button {
     align-items: center;
     flex-wrap: wrap;
     border-radius: 0.3rem;
-
     font-size: 1.1rem;
     font-weight: 400;
     background: #cecdd3;
@@ -111,27 +144,27 @@ p {
     /* border: #1a1a1a 1px solid; */
 }
 
-
 input {
     margin: 0.5rem;
-    background: #f8f8f8;
+    background: #fafafa;
+    min-width: 11rem;
+    border-radius: 5px;
+    padding: .5rem;
+    border: #333333 1px solid;
 }
-
 
 
 textarea {
+    background: #fafafa;
     min-height: 7rem;
-    min-width: 15rem;
+    min-width: 19rem;
     background: #f8f8f8;
     margin-bottom: 1.4rem;
     margin-top: .7rem;
+    border-radius: 5px;
+    padding: .5rem;
+    border: #333333 1px solid;
 }
-
-
-
-
-
-
 
 
 .form {

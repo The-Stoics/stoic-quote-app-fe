@@ -111,11 +111,11 @@ export default function App() {
                     onChange={changeHandler}
                 />
 
-                <button>Add</button>
+                <button className="btn hover">SUBMIT</button>
             </form>
 
             <div>
-                {[...quotes].reverse().map(quote => (
+                {quotes.reverse().map(quote => (
                     <div className='card-container' key={quote.id}>
 
                         <div className="card-text">
@@ -126,8 +126,8 @@ export default function App() {
                         <p className='quote-text'>{quote.quote}</p>
 
                         <div className="update-delete-buttons">
-                            <button onClick={() => deleteQuote(quote.id)}>Delete</button>
-                            <button onClick={() => updateQuote(quote)}>Update</button>
+                            <button className="btn hover" onClick={() => deleteQuote(quote.id)}>DELETE</button>
+                            <button className="btn hover" onClick={() => updateQuote(quote)}>UPDATE</button>
                         </div>
                     </div>
                 ))}
