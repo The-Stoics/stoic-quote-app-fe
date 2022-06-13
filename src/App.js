@@ -54,7 +54,7 @@ export default function App() {
             .then(res => setQuotes(res.data))
             .catch(err => console.log(err))
     }, [quotes.length]);
-    // console.log('quotes STATE =', quotes);
+    console.log('quotes STATE =', quotes);
 
     // Changes 'formData' state:
     const changeHandler = (e) => {
@@ -91,7 +91,7 @@ export default function App() {
                     value={formData.author}
                     name="author"
                     type="text"
-                    placeholder='Author'
+                    placeholder='Author*'
                     onChange={changeHandler}
                 />
 
@@ -99,7 +99,7 @@ export default function App() {
                     value={formData.source}
                     name="source"
                     type="text"
-                    placeholder='Source'
+                    placeholder='Source*'
                     onChange={changeHandler}
                 />
 
@@ -107,7 +107,7 @@ export default function App() {
                     value={formData.quote}
                     name="quote"
                     type="textarea"
-                    placeholder='Quote'
+                    placeholder='Quote*'
                     onChange={changeHandler}
                 />
 

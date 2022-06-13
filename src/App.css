@@ -70,7 +70,7 @@ button {
     border: .1rem solid rgb(102, 100, 100)
 }
 
-.hover:hover {
+.btn:hover {
     background-color: rgb(58, 58, 58);
     color: #ebebeb;
     border: .1rem solid rgb(58, 58, 58);
