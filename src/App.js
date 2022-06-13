@@ -17,6 +17,12 @@ export default function App() {
         quote: ''
     });
 
+    /* 
+        sets form fields to the ID the edit button click
+        scrolls to top
+        deletes quote that is being edited
+    */
+
 
     const updateQuote = (quote) => {
         axios.put(`https://thestoics.herokuapp.com/quotes/${quote.id}`, quote)
@@ -37,6 +43,9 @@ export default function App() {
 
     // Changes 'quotes' state:
     const deleteQuote = (id) => {
+
+        console.log('deleteQuote', quotes);
+
         axios
             .delete(`https://thestoics.herokuapp.com/quotes/${id}`)
             .then(res => {
@@ -46,6 +55,7 @@ export default function App() {
             .catch(err => console.log(err));
     }
 
+    console.log('quotes STATE =', quotes);
 
     // Changes quotes state:
     useEffect(() => {
@@ -53,8 +63,7 @@ export default function App() {
             .get('https://thestoics.herokuapp.com/quotes')
             .then(res => setQuotes(res.data))
             .catch(err => console.log(err))
-    }, [quotes.length]);
-    console.log('quotes STATE =', quotes);
+    }, []); // quotes.length
 
     // Changes 'formData' state:
     const changeHandler = (e) => {
@@ -83,7 +92,7 @@ export default function App() {
 
     return (
         <div className='app'>
-            <h1>THE STOICS</h1>
+            {/* <h1>THE STOICS</h1> */}
 
             <form className="form" onSubmit={submitHandler}>
 
@@ -115,7 +124,7 @@ export default function App() {
             </form>
 
             <div>
-                {quotes.reverse().map(quote => (
+                {[...quotes].reverse().map(quote => (
                     <div className='card-container' key={quote.id}>
 
                         <div className="card-text">
