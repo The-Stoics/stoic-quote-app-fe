@@ -74,7 +74,7 @@ button {
     color: #686868;
     border-radius: 25px;
     background-color: #7dd45500;
-    border: .1rem solid rgb(102, 100, 100)
+    border: .1rem solid rgb(80, 80, 80)
 }
 
 .btn:hover {
@@ -113,7 +113,7 @@ button {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    border-radius: 0.3rem;
+    border-radius: 0.3rem 0.3rem;
     font-size: 1.1rem;
     font-weight: 400;
     /* background: #cecdd3; */
@@ -186,7 +186,7 @@ textarea {
     padding-top: 1.8rem;
     padding-bottom: 1.8rem;
     margin-bottom: 2rem;
-    border-radius: 0.3rem;
+    border-radius: 0.3rem 0.3rem;
     /* border: 2px solid rgb(194, 194, 196); */
 }
 
