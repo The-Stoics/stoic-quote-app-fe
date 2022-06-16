@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import axios from 'axios';
 
+// changeHandler={changeHandler}
+// submitHandler={submitHandler}
+// export default function Form({ formData, changeHandler, submitHandler }) {
 
-export default function From() {
-    const [formData, setFormData] = useState({
-        author: '',
-        source: '',
-        quote: ''
-    });
+export default function Form({
+    formData,
+    setFormData,
+    quotes,
+    setQuotes,
+}) {
+
+    // console.log('FOOOOOOOORM', formData)
 
     const changeHandler = (e) => {
         setFormData({
@@ -16,13 +21,12 @@ export default function From() {
         });
     };
 
-
     const submitHandler = (e) => {
         e.preventDefault();
         axios
             .post('https://thestoics.herokuapp.com/quotes', formData)
             .then(res => {
-                console.log(res);
+                setQuotes([...quotes, res.data])
                 e.target.reset()
                 setFormData({
                     author: '',
@@ -33,36 +37,34 @@ export default function From() {
             .catch(err => console.log(err));
     };
 
-
     return (
-        <section>
-            <form className="labels" onSubmit={submitHandler}>
+        <form className="form" onSubmit={submitHandler}>
 
-                {/* <label>Author</label> */}
-                <input
-                    name="author"
-                    type="text"
-                    onChange={changeHandler}
-                />
+            <input
+                value={formData.author}
+                name="author"
+                type="text"
+                placeholder='Author*'
+                onChange={changeHandler}
+            />
 
-                <label>Source</label>
-                <input
-                    name="source"
-                    type="text"
-                    onChange={changeHandler}
-                />
+            <input
+                value={formData.source}
+                name="source"
+                type="text"
+                placeholder='Source*'
+                onChange={changeHandler}
+            />
 
-                <label>Quote</label>
-                <input
-                    className="quote-input"
-                    name="quote"
-                    type="textarea"
-                    onChange={changeHandler}
-                />
+            <textarea
+                value={formData.quote}
+                name="quote"
+                type="textarea"
+                placeholder='Quote*'
+                onChange={changeHandler}
+            />
 
-                <button>Add</button>
-
-            </form>
-        </section>
+            <button type="submit" className="btn hover">SUBMIT</button>
+        </form>
     )
 }

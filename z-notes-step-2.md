@@ -16,6 +16,101 @@ Dev Dep in package.json will now look like
 
 
 
+  // _______ quotes
+
+
+
+
+
+
+
+  Cicero
+
+On Ends 3.22
+
+Take the case of one whose task it is to shoot a spear or arrow straight at some target. One’s ultimate aim is to do all in one’s power to shoot straight, and the same applies with our ultimate goal. In this kind of example, it is to shoot straight that one must do all one can; none the less, it is to do all one can to accomplish the task that is really the ultimate aim. It is just the same with what we call the supreme good in life. To actually hit the target is, as we say, to be selected but not sought.
+
+Pierre Hadot
+
+The Inner Citadel, pg 106-7
+
+The hēgemonikon is alone free, because it alone can give or refuse its assent to that inner discourse which enunciates what the object is which is represented by a given phantasia. This borderline which objects cannot cross, this inviolable stronghold of freedom, is the limit of what I shall revert to as the inner citadel.
+
+Marcus Aurelius
+
+Meditations 7.47
+
+Observe the movement of the stars as if you were running their courses with them, and let your mind constantly dwell on the changes of the elements into each other. Such imaginings wash away the filth of life on the ground.
+
+Seneca
+
+Letters 95.51
+
+It is more wretched to harm than to be harmed.
+
+Marcus Aurelius
+
+Meditations 11.18.9
+
+Kindness is invincible, if it is sincere and not an act. What can the most aggressive man do to you if you continue to be kind to him?
+
+Seneca
+
+Letters 6.9.3
+
+There is no beneﬁt unless it proceeds from a good intention..
+
+Seneca
+
+Letters 94.74
+
+You see, it is as if good fortune and good character were opposite. We are wiser in adversity, for prosperity robs us of rectitude. Farewell.
+
+Epictetus
+
+Discourses 3.25.102
+
+I seek no other place than that in which I am.
+
+Marcus Aurelius
+
+Meditations 6.50
+
+Your intentions to act are always with a reserve clause, remember; you were not aiming at the impossible. At what then? Simply at making the attempt itself. In this you succeeded; and with that, the object of your existence is attained.
+
+Epictetus
+
+Enchiridion 8
+
+Do not wish that all things will go well with you, but that you will go well with all things.
+
+Epictetus
+
+Enchiridion 5
+
+Uneducated people blame others when they are doing badly. Those whose education is underway blame themselves. But the fully educated person blames no one, neither himself or anyone else.
+
+Epictetus
+
+Discourses 4.7.13
+
+Is it your wish that I should be poor? Bring it on then, and you’ll see what poverty is when it finds a good actor to play the part. Is it your wish that I should hold office? Bring it on. Is it your wish that I should be deprived of office? Bring it on. Is it your wish that I should suffer hardships? Bring those on too. What, and exile?    Wherever I go, all will be well with me, since that was also the case here, not because of the place but because of my judgements, and those that I’ll carry away with me, no one can take them away from me, they’re the only things that are truly my own, and it is enough for me that I should possess them, wherever I am and whatever I’m doing. ‘But the time has come for you to die.’ Why do you say ‘to die’? Don’t make a tragedy of the matter, but tell it as it is: ‘It is now time for the material of which you’re composed to return to the elements from which it came.’ And what is terrible in that? What element among all that make up the universe will be fated to perish? What new or extraordinary thing is going to come about?
+
+Marcus Aurelius
+
+Meditations 11.18.7
+
+It is not people's actions that trouble us, but our judgements of them, because the harm lies in their own minds. Remove these judgments, make up your mind to dismiss your assessment of some supposed outrage, and your anger is gone. And how to remove them? By reflecting that no moral harm has been done to you. Moral harm is the only true harm.
+
+
+
+
+
+
+  // _____________
+
+
+
 
 
 
@@ -24,6 +119,8 @@ Dev Dep in package.json will now look like
 
 
 IGNORE BELOW. NOTES TO BE DELETED!
+
+
 // _____________________________________________
 
 
