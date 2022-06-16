@@ -58,7 +58,7 @@ Seneca
 
 Letters 6.9.3
 
-There is no beneﬁt unless it proceeds from a good intention..
+There is no beneﬁt unless it proceeds from a good intention.
 
 Seneca
 
@@ -94,7 +94,7 @@ Epictetus
 
 Discourses 4.7.13
 
-Is it your wish that I should be poor? Bring it on then, and you’ll see what poverty is when it finds a good actor to play the part. Is it your wish that I should hold office? Bring it on. Is it your wish that I should be deprived of office? Bring it on. Is it your wish that I should suffer hardships? Bring those on too. What, and exile?    Wherever I go, all will be well with me, since that was also the case here, not because of the place but because of my judgements, and those that I’ll carry away with me, no one can take them away from me, they’re the only things that are truly my own, and it is enough for me that I should possess them, wherever I am and whatever I’m doing. ‘But the time has come for you to die.’ Why do you say ‘to die’? Don’t make a tragedy of the matter, but tell it as it is: ‘It is now time for the material of which you’re composed to return to the elements from which it came.’ And what is terrible in that? What element among all that make up the universe will be fated to perish? What new or extraordinary thing is going to come about?
+Is it your wish that I should be poor? Bring it on then, and you’ll see what poverty is when it finds a good actor to play the part. Is it your wish that I should hold office? Bring it on. Is it your wish that I should be deprived of office? Bring it on. Is it your wish that I should suffer hardships? Bring those on too. What, and exile? Wherever I go, all will be well with me, since that was also the case here, not because of the place but because of my judgements, and those that I’ll carry away with me, no one can take them away from me, they’re the only things that are truly my own, and it is enough for me that I should possess them, wherever I am and whatever I’m doing. ‘But the time has come for you to die.’ Why do you say ‘to die’? Don’t make a tragedy of the matter, but tell it as it is: ‘It is now time for the material of which you’re composed to return to the elements from which it came.’ And what is terrible in that? What element among all that make up the universe will be fated to perish? What new or extraordinary thing is going to come about?
 
 Marcus Aurelius
 
