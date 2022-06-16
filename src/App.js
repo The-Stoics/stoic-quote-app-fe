@@ -1,6 +1,6 @@
-// As of now, each key press in the form re-renders quotes state. I believe SWR and Suspense will stop that. 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+// As of now, each key press in the form re-renders quotes state. I believe SWR and Suspense will stop that. 
 import './App.css';
 import Form from './components/Form';
 import Delete from './components/Delete';
