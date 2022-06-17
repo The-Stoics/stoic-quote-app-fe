@@ -1,3 +1,9 @@
+@font-face {
+    font-family: clock;
+    src: url(components/clockwork-free.ttf);
+}
+
+
 body {
     /* background-color: #f0f0f0; */
     /* background: linear-gradient(179.97deg, #ffffff8a 0.03%, #dbdbdf8c 70.52%); */
@@ -36,28 +42,28 @@ body {
 
 
 h1 {
-    word-spacing: 1rem;
+    /* word-spacing: 1rem;
     letter-spacing: 0.1rem;
     text-align: center;
     font-weight: 400;
-    font-size: 3.3rem;
-    font-family: Clockwork Free, Helvetica, sans-serif;
-    color: #444343;
+    font-size: 11.3rem;
+    font-family: clock, Helvetica, sans-serif;
+    color: #444343; */
 
-    /* font-family: 'Clockwork Free';
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    letter-spacing: 0.1em;
-    font-style: normal;
     font-weight: 400;
-    font-size: 10rem;
-    margin: auto;
-    background: linear-gradient(179.97deg, #4b4b4b 0.03%, #0e0c58 70.52%);
+    word-spacing: 1rem;
+    letter-spacing: 0.1em;
+    font-size: 9rem;
+    margin: 1.5rem;
+    font-family: 'Clockwork Free';
+    background: linear-gradient(179.97deg, #747070 0.03%, #000000 70.52%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text; */
+    background-clip: text;
 }
 
 /* 
@@ -193,7 +199,7 @@ textarea {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    background-color: #cecdd396;
+    background-color: #cecdd3ab;
     max-width: 800px;
     padding-top: 1.8rem;
     padding-bottom: 1.8rem;
