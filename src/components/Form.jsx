@@ -6,13 +6,11 @@ import axios from 'axios';
 // export default function Form({ formData, changeHandler, submitHandler }) {
 
 export default function Form({
-    formData,
-    setFormData,
     quotes,
     setQuotes,
+    formData,
+    setFormData,
 }) {
-
-    // console.log('FOOOOOOOORM', formData)
 
     const changeHandler = (e) => {
         setFormData({
