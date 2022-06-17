@@ -57,9 +57,12 @@ h1 {
     font-weight: 400;
     word-spacing: 1rem;
     letter-spacing: 0.1em;
-    font-size: 9rem;
+    /* font-size: 9rem; */
+
+    font-size: 700%;
+
     margin: 1.5rem;
-    font-family: 'Clockwork Free';
+    font-family: clock;
     background: linear-gradient(179.97deg, #747070 0.03%, #000000 70.52%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
