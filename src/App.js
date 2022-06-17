@@ -5,10 +5,12 @@ import './App.css';
 import Form from './components/Form';
 import Delete from './components/Delete';
 import Update from './components/Update';
+import Skeleton from './components/Skeleton';
 
 
 
 export default function App() {
+    const [isLoading, setIsLoading] = useState(true);
     const [quotes, setQuotes] = useState([]);
     const [formData, setFormData] = useState({
         author: '',
@@ -24,9 +26,23 @@ export default function App() {
         axios
             .get('https://thestoics.herokuapp.com/quotes')
             .then(res => setQuotes(res.data))
+            .then(res => setIsLoading(false))
             .catch(err => console.log(err))
     }, []);
 
+
+
+    //     <div className="skeleton-container">
+    //     <div className="skeleton-author-conatiner">
+    //         <div className="skeleton-author"></div>
+    //         <div className="skeleton-author"></div>
+    //     </div>
+    //     <div className="skeleton-quote"></div>
+    //     <div className="skeleton-btn-container">
+    //         <div className="skeleton-buttons"></div>
+    //         <div className="skeleton-buttons"></div>
+    //     </div>
+    // </div>
 
 
     return (
@@ -39,6 +55,15 @@ export default function App() {
                 quotes={quotes}
                 setQuotes={setQuotes}
             />
+
+            {isLoading ?
+                <>
+                    <Skeleton />
+                    <Skeleton />
+                    <Skeleton />
+                </>
+                :
+                <></>}
 
             <div>
                 {[...quotes].reverse().map((quote) => (
