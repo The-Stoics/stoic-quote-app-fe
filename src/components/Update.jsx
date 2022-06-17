@@ -4,9 +4,9 @@ import axios from 'axios';
 
 export default function Update({
     quote,
-    setFormData,
-    setQuotes,
     quotes,
+    setQuotes,
+    setFormData,
 }) {
 
     const deleteQuote = (id) => {

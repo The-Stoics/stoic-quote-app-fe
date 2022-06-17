@@ -57,7 +57,11 @@ Dev Dep in package.json will now look like
 
 
 
+Epictetus
 
+Discourses 4.1.128
+
+The unhindered person is free. Whoever can be prevented, or coerced, frustrated or forced into a situation against their will, that person is a slave. The person who renounces externals cannot be hindered, as externals are things that are not within our power either to have or not to have.
 
 
 

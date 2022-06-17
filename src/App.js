@@ -18,9 +18,7 @@ export default function App() {
         quote: ''
     });
 
-    // console.log('formData STATE =', formData);
     console.log('quotes STATE =', quotes);
-
 
     useEffect(() => {
         axios
@@ -30,30 +28,15 @@ export default function App() {
             .catch(err => console.log(err))
     }, []);
 
-
-
-    //     <div className="skeleton-container">
-    //     <div className="skeleton-author-conatiner">
-    //         <div className="skeleton-author"></div>
-    //         <div className="skeleton-author"></div>
-    //     </div>
-    //     <div className="skeleton-quote"></div>
-    //     <div className="skeleton-btn-container">
-    //         <div className="skeleton-buttons"></div>
-    //         <div className="skeleton-buttons"></div>
-    //     </div>
-    // </div>
-
-
     return (
         <div className='app'>
             <h1>The Stoics</h1>
 
             <Form
-                formData={formData}
-                setFormData={setFormData}
                 quotes={quotes}
                 setQuotes={setQuotes}
+                formData={formData}
+                setFormData={setFormData}
             />
 
             {isLoading ?
@@ -66,7 +49,7 @@ export default function App() {
                 <></>}
 
             <div>
-                {[...quotes].reverse().map((quote) => (
+                {quotes.sort((a, b) => a.id - b.id).reverse().map((quote) => (
                     <div className='card-container' key={quote.id} >
                         <div className="card-text">
                             <p>{quote.author}</p>
@@ -76,7 +59,6 @@ export default function App() {
                         <div className="update-delete-buttons">
 
                             <Delete
-                                quote={quote}
                                 quotes={quotes}
                                 setQuotes={setQuotes}
                                 id={quote.id}
@@ -86,7 +68,6 @@ export default function App() {
                                 quote={quote}
                                 quotes={quotes}
                                 setQuotes={setQuotes}
-                                formData={formData}
                                 setFormData={setFormData}
                             />
 
