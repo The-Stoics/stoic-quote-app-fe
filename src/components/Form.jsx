@@ -1,9 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-// changeHandler={changeHandler}
-// submitHandler={submitHandler}
-// export default function Form({ formData, changeHandler, submitHandler }) {
+
 
 export default function Form({
     quotes,
