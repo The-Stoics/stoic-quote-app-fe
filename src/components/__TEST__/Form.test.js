@@ -40,49 +40,49 @@ describe('basic form elements render to the DOM', () => {
 });
 
 
-describe('mocking form input and submit behavior', () => {
-    const mockedSetQuotes = jest.fn();
-    const mockedSetFormData = jest.fn()
+// describe('mocking form input and submit behavior', () => {
+//     const mockedSetQuotes = jest.fn();
+//     const mockedSetFormData = jest.fn()
             
-    it('submiting form should reset fields to empty on submit click', async () => {
-        render(<Form
-            quotes={[]}
-            formData={{}}
-            setQuotes={mockedSetQuotes}
-            setFormData={mockedSetFormData}
-        />);
+//     it('submiting form should reset fields to empty on submit click', async () => {
+//         render(<Form
+//             quotes={[]}
+//             formData={{}}
+//             setQuotes={mockedSetQuotes}
+//             setFormData={mockedSetFormData}
+//         />);
         
-        // Selects inputs & submit button.
-        const authorInput = screen.getByPlaceholderText(/author*/i);  
-        const sourceInput = screen.getByPlaceholderText(/source*/i);         
-        const quoteInput = screen.getByPlaceholderText(/quote*/i);         
-        const submitButton = screen.getByRole('button', { name: /submit/i });
+//         // Selects inputs & submit button.
+//         const authorInput = screen.getByPlaceholderText(/author*/i);  
+//         const sourceInput = screen.getByPlaceholderText(/source*/i);         
+//         const quoteInput = screen.getByPlaceholderText(/quote*/i);         
+//         const submitButton = screen.getByRole('button', { name: /submit/i });
          
-        // Creates input field values.
-        fireEvent.change(authorInput, { target: { value: 'Seneca' } });
-        fireEvent.change(sourceInput, { target: { value: 'On Anger' } });  
-        fireEvent.change(quoteInput, { target: { value: 'The greatest remedy for anger is postponement' } });
+//         // Creates input field values.
+//         fireEvent.change(authorInput, { target: { value: 'Seneca' } });
+//         fireEvent.change(sourceInput, { target: { value: 'On Anger' } });  
+//         fireEvent.change(quoteInput, { target: { value: 'The greatest remedy for anger is postponement' } });
 
-        // Asserts that input field values match.
-        expect(authorInput.value).toBe('Seneca');
-        expect(sourceInput.value).toBe('On Anger');                       
-        expect(quoteInput.value).toBe('The greatest remedy for anger is postponement');
+//         // Asserts that input field values match.
+//         expect(authorInput.value).toBe('Seneca');
+//         expect(sourceInput.value).toBe('On Anger');                       
+//         expect(quoteInput.value).toBe('The greatest remedy for anger is postponement');
 
-        // Mocks submit click.
-        fireEvent.click(submitButton)
+//         // Mocks submit click.
+//         fireEvent.click(submitButton)
 
-        // Waits for submitHandler logic to complete. 
-        // Expects submit click to have reset the field
+//         // Waits for submitHandler logic to complete. 
+//         // Expects submit click to have reset the field
 
-        // // THERE IS A PROBLEM! This code below is trying to submit the form... 
-        // It creates actual DB posts.
-        await waitFor(() => {
-            expect(authorInput.value).toBe("");
-            expect(sourceInput.value).toBe(""); 
-            expect(quoteInput.value).toBe("");
-        })
-    });
-});
+//         // // THERE IS A PROBLEM! This code below is trying to submit the form... 
+//         // It creates actual DB posts.
+//         await waitFor(() => {
+//             expect(authorInput.value).toBe("");
+//             expect(sourceInput.value).toBe(""); 
+//             expect(quoteInput.value).toBe("");
+//         })
+//     });
+// });
 
 
 
