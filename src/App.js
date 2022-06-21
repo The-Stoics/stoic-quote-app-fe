@@ -15,7 +15,7 @@ export default function App() {
     const [formData, setFormData] = useState({
         author: '',
         source: '',
-        quote: ''
+        quote: '',
     });
 
     // console.log('quotes STATE =', quotes);

@@ -51,27 +51,35 @@ describe('mocking form input and submit behavior', () => {
             setQuotes={mockedSetQuotes}
             setFormData={mockedSetFormData}
         />);
+        
         // Selects inputs & submit button.
         const authorInput = screen.getByPlaceholderText(/author*/i);  
         const sourceInput = screen.getByPlaceholderText(/source*/i);         
         const quoteInput = screen.getByPlaceholderText(/quote*/i);         
-        const submitButton = screen.getByRole('button', { name: /submit/i }) 
+        const submitButton = screen.getByRole('button', { name: /submit/i });
+         
         // Creates input field values.
         fireEvent.change(authorInput, { target: { value: 'Seneca' } });
         fireEvent.change(sourceInput, { target: { value: 'On Anger' } });  
-        fireEvent.change(quoteInput, { target: { value: 'The greatest remedy for anger is postponement' } });  
+        fireEvent.change(quoteInput, { target: { value: 'The greatest remedy for anger is postponement' } });
+
         // Asserts that input field values match.
-        expect(authorInput.value).toBe('Seneca')
-        expect(sourceInput.value).toBe('On Anger')                           
-        expect(quoteInput.value).toBe('The greatest remedy for anger is postponement')                           
+        expect(authorInput.value).toBe('Seneca');
+        expect(sourceInput.value).toBe('On Anger');                       
+        expect(quoteInput.value).toBe('The greatest remedy for anger is postponement');
+
         // Mocks submit click.
-        fireEvent.click(submitButton)   
+        fireEvent.click(submitButton)
+
         // Waits for submitHandler logic to complete. 
         // Expects submit click to have reset the field
+
+        // // THERE IS A PROBLEM! This code below is trying to submit the form... 
+        // It creates actual DB posts.
         await waitFor(() => {
-            expect(authorInput.value).toBe("")
-            expect(sourceInput.value).toBe("")  
-            expect(quoteInput.value).toBe("")  
+            expect(authorInput.value).toBe("");
+            expect(sourceInput.value).toBe(""); 
+            expect(quoteInput.value).toBe("");
         })
     });
 });
