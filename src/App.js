@@ -44,7 +44,7 @@ export default function App() {
                 </>
                 :
                 <>{quotes.sort((a, b) => a.id - b.id).reverse().map((quote) => (
-                    <div className='card-container' data-testid="banana" key={quote.id} >
+                    <div className='card-container' key={quote.id}>
                         <div className="card-text">
                             <p>{quote.author}</p>
                             <p>{quote.source}</p>

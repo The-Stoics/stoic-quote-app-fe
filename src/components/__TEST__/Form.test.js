@@ -2,446 +2,124 @@ import { fireEvent, getByTestId, render, screen, waitFor } from "@testing-librar
 import '@testing-library/jest-dom'
 import userEvent from "@testing-library/user-event";
 import App from "../../App";
-// import Form from "../Form";
+import Form from "../Form";
+import { server } from '../../components/__mocks__/server';
 
-import MockForm from "../Form";
-jest.mock("../Form");
+beforeAll(() => server.listen({ onUnhandledRequest: 'wArNiNg' }));
+afterEach(() => server.resetHandlers());
+afterAll(() => server.close());
 
-
-let mockForm = {
-    author: '',
-    source: '',
-    quote: '',
-}
-
-// Mock a submit button.
-it('should submit a quote', async () => {
-    MockForm.mockResolvedValue({ mockForm });
-
-
-
-    render(<App />);
-    const authorInput = screen.getByPlaceholderText(/Author*/i);
-    const sourceInput = screen.getByPlaceholderText(/Source*/i);
-    const quoteInput = screen.getByPlaceholderText(/Quote*/i);
-
-    const submitButton = screen.getByRole('button', { name: /submit/i });
-    fireEvent.change(authorInput, { target: { value: 'AuthorMock' } });
-    fireEvent.change(sourceInput, { target: { value: 'SourceMock' } });
-    fireEvent.change(quoteInput, { target: { value: 'QuoteMock' } });
-    fireEvent.click(submitButton);
-
-    await waitFor(() => {
-        expect(screen.getByText('QuoteMock')).toBeInTheDocument();
-    }
-    );
-}
-);
-
-
-
-// it('should return 400 when missing required fields', async () => {
-//     const mockAdd = {
-//         id: 111,
-//         author: "Seneca",
-//         source: "To Nero",
-//         quote: "What have you done?"
-//     };
-//     Quotes.create.mockResolvedValue({ mockAdd });
-//     const res = await request(server).post('/quotes').send(mockAdd);
-//     expect(res.body.mockAdd.id).not.toBe(999);
-//     expect(res.body.mockAdd.author).not.toBe("Epicurus");
-//     expect(res.body.mockAdd.source).not.toBe("The Garden");
-//     expect(res.body.mockAdd.quote).not.toBe("Death does not exist.");
-// });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// data-testid="banana"
+// Need to learn why I have to test App rather than Form.
 
 
 // // Sanity test*
-// test('First test', () => {
-//     render(<App />);
-//     // screen.debug(); // Shows what is in render(<Anthing />) pertaining to the DOM.
-//     expect(true).toBe(true); // Sanity check
-//     expect(screen.getByText('The Stoics')).toBeInTheDocument(); // Finds the element with the text 'The Stoics'
-// });
+test('First test', () => {
+    render(<App />);
+    // screen.debug(); // Shows what is in render(<Anthing />) pertaining to the DOM.
+    expect(true).toBe(true); // Sanity check
+    expect(screen.getByText('The Stoics')).toBeInTheDocument(); // Finds the element with the text 'The Stoics'
+});
 
 
+describe('basic form elements render to the DOM', () => {
 
-// describe('basic form elements render to the DOM', () => {
+    it('should render Form component', () => {
+        render(<Form quotes={[]} formData={{}} />);
+    });
 
-//     it('should render Form component', () => {
-//         render(<Form quotes={[]} formData={{}} />);
-//     });
+    it('should render submit button', () => {
+        render(<Form formData={{}} />);
+        const button = screen.getByText("SUBMIT"); // (/sUbMiT/i) =  Makes it case insensitive.
+        // const button = screen.queryByRole(/button/i); // Alternative query, button is a role.
+        // const submitButton = screen.getByRole('button', { name: /submit/i }) // This selects the buttons, and just to make sure it also specifies the name that is in the button.
+        expect(button).toBeInTheDocument();
+    });
 
-//     it('should render submit button', () => {
-//         render(<Form formData={{}} />);
-//         const button = screen.getByText("SUBMIT"); // (/sUbMiT/i) =  Makes it case insensitive.
-//         // const button = screen.queryByRole(/button/i); // Alternative query, button is a role.
-//         // const submitButton = screen.getByRole('button', { name: /submit/i }) // This selects the buttons, and just to make sure it also specifies the name that is in the button.
-//         expect(button).toBeInTheDocument();
-//     });
+    it('should render input fields', async () => {
+        render(<Form quotes={[]} formData={{}} />);
+        const authorInput = screen.getByPlaceholderText(/Author*/i);
+        const sourceInput = screen.getByPlaceholderText(/Source*/i);
+        const quoteInput = screen.getByPlaceholderText(/Quote*/i);
+        expect(authorInput).toBeInTheDocument();
+        expect(sourceInput).toBeInTheDocument();
+        expect(quoteInput).toBeInTheDocument();
+    });
+});
 
-//     it('should render input fields', async () => {
-//         render(<Form quotes={[]} formData={{}} />);
-//         const authorInput = screen.getByPlaceholderText(/Author*/i);
-//         const sourceInput = screen.getByPlaceholderText(/Source*/i);
-//         const quoteInput = screen.getByPlaceholderText(/Quote*/i);
-//         expect(authorInput).toBeInTheDocument();
-//         expect(sourceInput).toBeInTheDocument();
-//         expect(quoteInput).toBeInTheDocument();
-//     });
-// });
 
+describe('form inputs and submissions', () => {
+    it('form input updates value when typing and resets on submit', async () => {
+        render(<App />);
 
-// ------------------------------------------------------------------------
+        // Selects inputs & submit button.
+        const authorInput = screen.getByPlaceholderText(/author*/i);
+        const sourceInput = screen.getByPlaceholderText(/source*/i);
+        const quoteInput = screen.getByPlaceholderText(/quote*/i);
+        const submitButton = screen.getByRole('button', { name: /submit/i });
 
+        // Creates input field values.
+        fireEvent.change(authorInput, { target: { value: 'Seneca' } });
+        fireEvent.change(sourceInput, { target: { value: 'On Anger' } });
+        fireEvent.change(quoteInput, { target: { value: 'The greatest remedy for anger is postponement' } });
 
+        // Asserts that input field values match.
+        expect(authorInput.value).toBe('Seneca');
+        expect(sourceInput.value).toBe('On Anger');
+        expect(quoteInput.value).toBe('The greatest remedy for anger is postponement');
 
+        // Mocks submit click.
+        fireEvent.click(submitButton)
 
+        // Waits for submitHandler logic to complete.
+        // Expects submit click to have reset the field
+        await waitFor(() => {
+            expect(authorInput.value).toBe("");
+            expect(sourceInput.value).toBe("");
+            expect(quoteInput.value).toBe("");
+        })
+    });
 
 
+    it('form submissions renders to DOM on submit', async () => {
+        render(<App />);
+        const authorInput = screen.getByPlaceholderText(/Author*/i);
+        const sourceInput = screen.getByPlaceholderText(/Source*/i);
+        const quoteInput = screen.getByPlaceholderText(/Quote*/i);
+        const submitButton = screen.getByRole('button', { name: /submit/i });
 
+        fireEvent.change(authorInput, { target: { value: 'AuthorMock' } });
+        fireEvent.change(sourceInput, { target: { value: 'SourceMock' } });
+        fireEvent.change(quoteInput, { target: { value: 'QuoteMock' } });
 
+        fireEvent.click(submitButton);
 
+        await waitFor(() => {
+            expect(screen.getByText('AuthorMock')).toBeInTheDocument();
+            expect(screen.getByText('SourceMock')).toBeInTheDocument();
+            expect(screen.getByText('QuoteMock')).toBeInTheDocument();
+        });
+    });
 
+});
 
 
 
 
+// it('should not allow form submission if author text is less than 3 characters', async () => {});
+// it('quote should no be in document upon clicking delete', async () => {});
+// it('should render h1 header to the DOM', async () => {});
+// it('should render a list of quote cards when isLoading is false', async () => {});
+// it('should render Skeleton loading component when isLoading is true', async () => {});
+// it('should render Delete component', async () => {});
+// it('should render Update component', async () => {});
 
 
 
 
+// expect(screen.getAllByTestId('banana')).toHaveLength(5);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ------------------------------------------------------------------------
-
-
-
-
-
-
-// it('submiting form should reset fields to empty on submit click', async () => {
-
-//     const mockQuotes = jest.fn(() => {
-//         return [
-//                 {author: 'mockQuotes'},
-//                 {source: 'mockQuotes'},
-//                 {quote: 'mockQuotes'}
-//         ]
-//     });
-
-//     const mockedSetQuotes = jest.fn(() => {
-//         return [
-//                 {author: 'mockedSetQuote'},
-//                 {source: 'mockedSetQuote'},
-//                 {quote: 'mockedSetQuote'}
-//         ]
-//     });
-
-//     const mockFormData = jest.fn(() => {
-//         return [
-//                 {author: ''},
-//                 {source: ''},
-//                 {quote: ''}
-//         ]
-//     });
-
-//     const mockedSetFormData = jest.fn()
-
-//     // const mockedSetFormData = jest.fn(() => {
-//     //     return [
-//     //             {author: 'mockAuthor'},
-//     //             {source: 'mockSource'},
-//     //             {quote: 'mockQuote'}
-//     //     ]
-//     // });
-
-//     render(<Form
-//         quotes={mockQuotes}
-//         formData={mockFormData}
-//         setQuotes={mockedSetQuotes}
-//         setFormData={mockedSetFormData}
-//     />);
-
-//     const authorInput = screen.getByPlaceholderText(/author*/i);
-//     const submitButton = screen.getByRole('button', { name: /submit/i });
-
-
-//     fireEvent.change(authorInput, { target: { value: 'Seneca' } });
-
-//     console.log('@@@@@@@@@@@@@@@@@@@@@@@@@  mockedSetFormData', mockedSetFormData.mock.calls);
-
-//     // console.log('@@@@@@@@@@@@@@@@@@@@@@@@@', mockQuotes.mock);
-//     // console.log('@@@@@@@@@@@@@@@@@@@@@@@@@', mockedSetQuotes.mock);
-//     // console.log('@@@@@@@@@@@@@@@@@@@@@@@@@', authorInput);
-//     // console.log('@@@@@@@@@@@@@@@@@@@@@@@@@', mockFormData.mock);
-
-
-//     // expect(authorInput.value).toBe('Seneca');
-
-//     // fireEvent.click(submitButton)
-
-//     await waitFor(() => {
-//         expect(authorInput.value).toBe("");
-//     })
-// });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ------------------------------------------------------------------------
-
-
-// Untouched version for reference: Will DELETE this later.
-
-// describe('mocking form input and submit behavior', () => {
-//     const mockedSetQuotes = jest.fn();
-//     const mockedSetFormData = jest.fn()
-
-//     it('submiting form should reset fields to empty on submit click', async () => {
-//         render(<Form
-//             quotes={[]}
-//             formData={{}}
-//             setQuotes={mockedSetQuotes}
-//             setFormData={mockedSetFormData}
-//         />);
-
-//         // Selects inputs & submit button.
-//         const authorInput = screen.getByPlaceholderText(/author*/i);
-//         const sourceInput = screen.getByPlaceholderText(/source*/i);
-//         const quoteInput = screen.getByPlaceholderText(/quote*/i);
-//         const submitButton = screen.getByRole('button', { name: /submit/i });
-
-//         // Creates input field values.
-//         fireEvent.change(authorInput, { target: { value: 'Seneca' } });
-//         fireEvent.change(sourceInput, { target: { value: 'On Anger' } });
-//         fireEvent.change(quoteInput, { target: { value: 'The greatest remedy for anger is postponement' } });
-
-//         // Asserts that input field values match.
-//         expect(authorInput.value).toBe('Seneca');
-//         expect(sourceInput.value).toBe('On Anger');
-//         expect(quoteInput.value).toBe('The greatest remedy for anger is postponement');
-
-//         // Mocks submit click.
-//         fireEvent.click(submitButton)
-
-//         // Waits for submitHandler logic to complete.
-//         // Expects submit click to have reset the field
-
-//         // // THERE IS A PROBLEM! This code below is trying to submit the form...
-//         // It creates actual DB posts.
-//         await waitFor(() => {
-//             expect(authorInput.value).toBe("");
-//             expect(sourceInput.value).toBe("");
-//             expect(quoteInput.value).toBe("");
-//         })
-//     });
-// });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// console.log('@@@@@@@@@@@@@@@@@@~~~~~~~~>', authorInput.value)
-
-
-
-// export default function Form({
-//     quotes,
-//     setQuotes,
-//     formData,
-//     setFormData,
-// }) {
-
-//     const changeHandler = (e) => {
-//         setFormData({
-//             ...formData,
-//             [e.target.name]: e.target.value
-//         });
-//     };
-
-//     const submitHandler = (e) => {
-//         e.preventDefault();
-//         axios
-//             .post('https://thestoics.herokuapp.com/quotes', formData)
-//             .then(res => {
-//                 setQuotes([...quotes, res.data])
-//                 e.target.reset()
-//                 setFormData({
-//                     author: '',
-//                     source: '',
-//                     quote: ''
-//                 })
-//             })
-//             .catch(err => console.log(err));
-//     };
-
-
-//       <input
-//         name="author"
-//         placeholder="Author*"
-//         type="text"
-//         value=""
-//       />
-
-
-//       <button type="submit">
-//         SUBMIT
-//       </button>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-// @@@@@@@@@@@@@ Everything below fails. @@@@@@@@@@@@@@@@@
-// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 
 
@@ -459,29 +137,6 @@ it('should submit a quote', async () => {
 //     expect(x).toBeInTheDocument();
 //     screen.debug();
 // })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -505,16 +160,15 @@ it('should submit a quote', async () => {
     // });
 
     // const fakeSetQuotes = jest.fn(() => {
-    //     return 'This is FaaaAKE!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
+    //     return 'This is FaaaAKE!'
     // });
 
     // render(<Form
         // quotes={fakeQuotes}
         // formData={fakeFormData}
-    // submitHandler={fakeSubmitHandler}
-    // setFormData={fakeSetFormData}
-    // setQuotes={fakeSetQuotes}
-
+        // submitHandler={fakeSubmitHandler}
+        // setFormData={fakeSetFormData}
+        // setQuotes={fakeSetQuotes}
 //     />);
 
 //     const button = screen.getByRole(/button/i); // button is a role.
@@ -534,7 +188,6 @@ it('should submit a quote', async () => {
 //         formData={{}}
 //     />);
 
-//     screen.getByRole('');
 //     const button = await screen.getByRole(button);
 //     userEvent.click(button);
 //     // expect(screen.getAllByTestId('banana')).toHaveLength(5);

@@ -36,7 +36,19 @@ data-testid="banana":
 When we want to query something that changes, we can use data-testid=""
 
 
+// ____________________________
 
+
+Created the __mocks__ folder and everything in it. It must connect to every test file like this:
+
+import { server } from '../../components/__mocks__/server';
+
+beforeAll(() => server.listen({ onUnhandledRequest: 'wArNiNg' }));
+afterEach(() => server.resetHandlers());
+afterAll(() => server.close());
+
+
+// ____________________________
 
 
 
