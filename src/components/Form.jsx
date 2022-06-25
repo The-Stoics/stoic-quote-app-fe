@@ -26,6 +26,7 @@ export default function Form({
             axios
                 .post('https://thestoics.herokuapp.com/quotes', formData)
                 .then(res => {
+                    console.log(res)
                     setQuotes([...quotes, res.data])
                     e.target.reset()
                     setFormData({

@@ -8,7 +8,6 @@ import Update from './components/Update';
 import Skeleton from './components/Skeleton';
 
 
-
 export default function App() {
     const [isLoading, setIsLoading] = useState(true);
     const [quotes, setQuotes] = useState([]);
@@ -42,14 +41,9 @@ export default function App() {
             {isLoading ?
                 <>
                     <Skeleton />
-                    <Skeleton />
-                    <Skeleton />
                 </>
                 :
-                <></>}
-
-            <div>
-                {quotes.sort((a, b) => a.id - b.id).reverse().map((quote) => (
+                <>{quotes.sort((a, b) => a.id - b.id).reverse().map((quote) => (
                     <div className='card-container' data-testid="banana" key={quote.id} >
                         <div className="card-text">
                             <p>{quote.author}</p>
@@ -74,7 +68,7 @@ export default function App() {
                         </div>
                     </div>
                 ))}
-            </div>
+                </>}
         </div >
     );
 };
