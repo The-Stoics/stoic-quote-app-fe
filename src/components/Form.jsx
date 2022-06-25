@@ -1,9 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
-// changeHandler={changeHandler}
-// submitHandler={submitHandler}
-// export default function Form({ formData, changeHandler, submitHandler }) {
 
 export default function Form({
     quotes,
@@ -12,6 +9,8 @@ export default function Form({
     setFormData,
 }) {
 
+    const [formValidation, setFormValidation] = useState('')
+
     const changeHandler = (e) => {
         setFormData({
             ...formData,
@@ -19,21 +18,29 @@ export default function Form({
         });
     };
 
+
     const submitHandler = (e) => {
         e.preventDefault();
-        axios
-            .post('https://thestoics.herokuapp.com/quotes', formData)
-            .then(res => {
-                setQuotes([...quotes, res.data])
-                e.target.reset()
-                setFormData({
-                    author: '',
-                    source: '',
-                    quote: ''
+        if (formData.author.length > 3) {
+            setFormValidation('')
+            axios
+                .post('https://thestoics.herokuapp.com/quotes', formData)
+                .then(res => {
+                    console.log(res)
+                    setQuotes([...quotes, res.data])
+                    e.target.reset()
+                    setFormData({
+                        author: '',
+                        source: '',
+                        quote: ''
+                    })
                 })
-            })
-            .catch(err => console.log(err));
-    };
+                .catch(err => console.log(err));
+        } else {
+            setFormValidation('Author field must contain at least 3 characters.')
+        };
+    }
+
 
     return (
         <form className="form" onSubmit={submitHandler}>
@@ -63,6 +70,9 @@ export default function Form({
             />
 
             <button type="submit" className="btn hover">SUBMIT</button>
+
+            <p style={{ color: 'red' }}>{formValidation}</p>
+
         </form>
     )
 }

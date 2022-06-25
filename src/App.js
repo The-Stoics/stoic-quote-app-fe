@@ -8,17 +8,16 @@ import Update from './components/Update';
 import Skeleton from './components/Skeleton';
 
 
-
 export default function App() {
     const [isLoading, setIsLoading] = useState(true);
     const [quotes, setQuotes] = useState([]);
     const [formData, setFormData] = useState({
         author: '',
         source: '',
-        quote: ''
+        quote: '',
     });
 
-    console.log('quotes STATE =', quotes);
+    // console.log('quotes STATE =', quotes);
 
     useEffect(() => {
         axios
@@ -42,15 +41,10 @@ export default function App() {
             {isLoading ?
                 <>
                     <Skeleton />
-                    <Skeleton />
-                    <Skeleton />
                 </>
                 :
-                <></>}
-
-            <div>
-                {quotes.sort((a, b) => a.id - b.id).reverse().map((quote) => (
-                    <div className='card-container' key={quote.id} >
+                <>{quotes.sort((a, b) => a.id - b.id).reverse().map((quote) => (
+                    <div className='card-container' key={quote.id}>
                         <div className="card-text">
                             <p>{quote.author}</p>
                             <p>{quote.source}</p>
@@ -74,7 +68,7 @@ export default function App() {
                         </div>
                     </div>
                 ))}
-            </div>
+                </>}
         </div >
     );
 };
