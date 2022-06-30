@@ -50,6 +50,7 @@ export default function Form({
                 name="author"
                 type="text"
                 placeholder='Author*'
+                data-test-id="author-input"
                 onChange={changeHandler}
             />
 
@@ -58,6 +59,7 @@ export default function Form({
                 name="source"
                 type="text"
                 placeholder='Source*'
+                data-test-id="source-input"
                 onChange={changeHandler}
             />
 
@@ -66,10 +68,11 @@ export default function Form({
                 name="quote"
                 type="textarea"
                 placeholder='Quote*'
+                data-test-id="quote-input"
                 onChange={changeHandler}
             />
 
-            <button type="submit" className="btn hover">SUBMIT</button>
+            <button type="submit" className="btn hover" data-test-id="submit-input">SUBMIT</button>
 
             <p style={{ color: 'red' }}>{formValidation}</p>
 

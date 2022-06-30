@@ -40,17 +40,18 @@ export default function App() {
 
             {isLoading ?
                 <>
-                    <Skeleton />
+                    <Skeleton data-testid="skeleton-loading" />
                 </>
                 :
                 <>{quotes.sort((a, b) => a.id - b.id).reverse().map((quote) => (
-                    <div className='card-container' key={quote.id}>
+                    <div className='card-container' key={"card-container-" + quote.id}>
                         <div className="card-text">
                             <p>{quote.author}</p>
                             <p>{quote.source}</p>
                         </div>
                         <p className='quote-text'>{quote.quote}</p>
                         <div className="update-delete-buttons">
+
 
                             <Delete
                                 quotes={quotes}
