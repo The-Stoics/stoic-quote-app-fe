@@ -1,4 +1,4 @@
-CD documents
+CD documents 
 
 npx create-react-app APP_NAME
 
