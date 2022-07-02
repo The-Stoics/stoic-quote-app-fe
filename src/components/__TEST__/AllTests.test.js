@@ -1,25 +1,38 @@
-import { fireEvent, getByTestId, render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, getByTestId, render, screen, waitFor, userEvent } from "@testing-library/react";
 import '@testing-library/jest-dom'
-import userEvent from "@testing-library/user-event";
 import App from "../../App";
 import Form from "../Form";
-import { server } from '../../components/__mocks__/server';
+import Delete from "../Delete";
+import Update from "../Update";
+import { server } from '../__mocks__/server';
 
 beforeAll(() => server.listen({ onUnhandledRequest: 'wArNiNg' }));
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
-// data-testid="banana"
-// Need to learn why I have to test App rather than Form.
 
+describe('Sanity tests to check if components render', () => {
 
-// // Sanity test*
-test('First test', () => {
-    render(<App />);
-    // screen.debug(); // Shows what is in render(<Anthing />) pertaining to the DOM.
-    expect(true).toBe(true); // Sanity check
-    expect(screen.getByText('The Stoics')).toBeInTheDocument(); // Finds the element with the text 'The Stoics'
+    test('First test', () => {
+        render(<App />);
+        // screen.debug(); // Shows what is in render(<Anthing />) pertaining to the DOM.
+        expect(true).toBe(true);
+        expect(screen.getByText(/the stoics/i)).toBeInTheDocument();
+    });
+
+    it('should render Form component', () => {
+        render(<Form quotes={[]} formData={{}} />);
+    });
+
+    it('should render Delete component', () => {
+        render(<Delete />);
+    });
+
+    it('should render Update component', () => {
+        render(<Update />);
+    });
 });
+
 
 
 describe('basic form elements render to the DOM', () => {
@@ -48,7 +61,8 @@ describe('basic form elements render to the DOM', () => {
 });
 
 
-describe('form inputs and submissions', () => {
+describe('form inputs and submissions render', () => {
+
     it('form input updates value when typing and resets on submit', async () => {
         render(<App />);
 
@@ -80,7 +94,6 @@ describe('form inputs and submissions', () => {
         })
     });
 
-
     it('form submissions renders to DOM on submit', async () => {
         render(<App />);
         const authorInput = screen.getByPlaceholderText(/Author*/i);
@@ -100,95 +113,45 @@ describe('form inputs and submissions', () => {
             expect(screen.getByText('QuoteMock')).toBeInTheDocument();
         });
     });
-
 });
 
 
 
+it('should not allow form submission if author text is less than 3 characters', async () => {
+    render(<App />);
+    const authorInput = screen.getByPlaceholderText(/Author*/i);
+    const submitButton = screen.getByRole('button', { name: /submit/i });
 
-// it('should not allow form submission if author text is less than 3 characters', async () => {});
-// it('quote should no be in document upon clicking delete', async () => {});
-// it('should render h1 header to the DOM', async () => {});
-// it('should render a list of quote cards when isLoading is false', async () => {});
-// it('should render Skeleton loading component when isLoading is true', async () => {});
-// it('should render Delete component', async () => {});
-// it('should render Update component', async () => {});
+    fireEvent.change(authorInput, { target: { value: 'a' } });
+    fireEvent.click(submitButton);
+    expect(screen.getByText('Author field must contain at least 3 characters.')).toBeInTheDocument();
+});
 
+it('quote should not be in document upon clicking delete', async () => {
+    render(<App />);
+    const authorInput = screen.getByPlaceholderText(/Author*/i);
+    const sourceInput = screen.getByPlaceholderText(/Source*/i);
+    const quoteInput = screen.getByPlaceholderText(/Quote*/i);
+    const submitButton = screen.getByRole('button', { name: /submit/i });
 
+    fireEvent.change(authorInput, { target: { value: 'AuthorMock' } });
+    fireEvent.change(sourceInput, { target: { value: 'SourceMock' } });
+    fireEvent.change(quoteInput, { target: { value: 'QuoteMock' } });
 
+    fireEvent.click(submitButton);
 
-// expect(screen.getAllByTestId('banana')).toHaveLength(5);
+    await waitFor(() => {
+        expect(screen.getByText('AuthorMock')).toBeInTheDocument();
+        expect(screen.getByText('SourceMock')).toBeInTheDocument();
+        expect(screen.getByText('QuoteMock')).toBeInTheDocument();
+    });
 
+    const deleteButton = screen.getByRole('button', { name: /delete/i });
+    fireEvent.click(deleteButton);
 
-
-
-
-// const skeletonComp = screen.getByTestId("skeleton-loading");
-// expect(skeletonComp).toBeInTheDocument();
-// expect(screen.queryByTestId("skeleton-loading")).toBeInTheDocument();
-
-
-
-// it('should show skeleton loading on isLoading = true', async () => {
-//     render(<App />);
-
-//     const x = await waitFor(() => screen.queryByText(/testing/i))
-//     console.log('@@@@@@@@@', isLoading)
-//     expect(x).toBeInTheDocument();
-//     screen.debug();
-// })
-
-
-
-
-// test('mocking input', () => {
-
-    // const fakeQuotes = jest.fn(() => {
-    //     return 'This is FAKE!'
-    // });
-
-    // const fakeSubmitHandler = jest.fn(() => {
-    //     return 'This is FaKE!'
-    // });
-
-    // const fakeSetFormData = jest.fn(() => {
-    //     return 'This is FAKE!'
-    // });
-
-    // const fakeFormData = jest.fn(() => {
-    //     return 'This is FAKE!'
-    // });
-
-    // const fakeSetQuotes = jest.fn(() => {
-    //     return 'This is FaaaAKE!'
-    // });
-
-    // render(<Form
-        // quotes={fakeQuotes}
-        // formData={fakeFormData}
-        // submitHandler={fakeSubmitHandler}
-        // setFormData={fakeSetFormData}
-        // setQuotes={fakeSetQuotes}
-//     />);
-
-//     const button = screen.getByRole(/button/i); // button is a role.
-//     userEvent.click(button);
-//     userEvent.click(button);
-//     userEvent.click(button);
-//     expect(fakeSubmitHandler).toHaveBeenCalledTimes(3);
-
-//     console.log('@@@@@@@@@@@@', fakeFormData.mock); //  This should show 3 calls, but does not.
-// })
-
-
-
-// test('Testing if data/quotes get rendered', async () => {
-//     render(<Form
-//         quotes={[]}
-//         formData={{}}
-//     />);
-
-//     const button = await screen.getByRole(button);
-//     userEvent.click(button);
-//     // expect(screen.getAllByTestId('banana')).toHaveLength(5);
-// });
+    await waitFor(() => {
+        expect(screen.queryByText('AuthorMock')).not.toBeInTheDocument();
+        expect(screen.queryByText('SourceMock')).not.toBeInTheDocument();
+        expect(screen.queryByText('QuoteMock')).not.toBeInTheDocument();
+    });
+});
