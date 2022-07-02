@@ -1,8 +1,13 @@
- <br />
+
+  <br />
+  
+ # <p align="center">[Deployment = https://thestoics.netlify.app/](https://thestoics.netlify.app/)</p>
+  
+  <br />
  
- Welcome to *The Stoics*, a quote web app about the ancient Stoic philosophers from Greece and Rome. 
+ Welcome to *The Stoics*, a full stack web app about the ancient Stoic philosophers from Greece and Rome and their saying on morality and truth. This is a minimalistic design which implements the very basics of a fully functional CRUD app (Create Read Update & Delete). This full stack web app was created from scratch, the backend API is built with Node, PostGres, and deployed to Heroku. The Front end is built with React and deployed to Netlify. Both frontend and backend contain unit, integration, and mock testing.
  
- # [Deployment = https://thestoics.netlify.app/](https://thestoics.netlify.app/)
+
 
 <br />
 <br />
