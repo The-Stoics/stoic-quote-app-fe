@@ -1,6 +1,6 @@
  <br />
  
- Welcome to The Stoics, a quote web app about the ancient Stoic philosophers from Greece and Rome. 
+ Welcome to *The Stoics*, a quote web app about the ancient Stoic philosophers from Greece and Rome. 
  
  # [Deployment = https://thestoics.netlify.app/](https://thestoics.netlify.app/)
 
