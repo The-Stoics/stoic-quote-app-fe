@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-// As of now, each key press in the form re-renders quotes state. I believe SWR and Suspense will stop that. 
 import './App.css';
 import Form from './components/Form';
 import Delete from './components/Delete';
@@ -16,8 +15,6 @@ export default function App() {
         source: '',
         quote: '',
     });
-
-    // console.log('quotes STATE =', quotes);
 
     useEffect(() => {
         axios
@@ -40,7 +37,7 @@ export default function App() {
 
             {isLoading ?
                 <>
-                    <Skeleton data-testid="skeleton-loading" />
+                    <Skeleton />
                 </>
                 :
                 <>{quotes.sort((a, b) => a.id - b.id).reverse().map((quote) => (

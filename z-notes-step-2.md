@@ -1,4 +1,8 @@
 Had to refactor the index.js due to React 18 changes.
+
+
+// In App.js, I may add SWR and Suspense at a later time, this stops re-renders and allows loading to be synchronous. 
+
 // ___________________________________________________
 
 
@@ -47,8 +51,105 @@ beforeAll(() => server.listen({ onUnhandledRequest: 'wArNiNg' }));
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
+// ------------------------------------------------------------------
 
-// ____________________________
+
+// data-testid="banana"
+// Look at common testing methods, not to be num toBe visable and all that jazz. RTL cheat sheet
+// Add Test Driven Development to the project. Click to sort authors by name.
+
+
+
+// __________________________________________________________________
+
+Some tests I scrapped but saving for reference:
+
+
+
+// Google Shallow mount and wrapper*
+// State & props is always mocked
+
+it('form input updates value when typing and resets on submit', async () => {
+
+    let mockFormData = {
+        author: '',
+        source: '',
+        quote: ''
+    }
+
+    let mockQuotes = [];
+
+
+    const setFormData = jest.fn((newData) => {
+        mockQuotes = newData;
+    });
+
+    const screen = render(<Form
+        quotes={mockQuotes}
+        setQuotes={(newQuote) => {
+            mockQuotes.push(newQuote);
+        }}
+        formData={mockFormData}
+        setFormData={setFormData}
+    />);
+
+
+    const authorInput = screen.getByPlaceholderText(/author*/i);
+    const sourceInput = screen.getByPlaceholderText(/source*/i);
+    const quoteInput = screen.getByPlaceholderText(/quote*/i);
+    const submitButton = screen.getByRole('button', { name: /submit/i });
+
+
+    fireEvent.change(authorInput, { target: { value: 'Seneca' } }); // returns true. Why?
+    console.log('authorInput.value =', authorInput.value);
+
+    expect(authorInput.value).toBe('Seneca');
+    // await waitFor(() => expect(authorInput.value).toBe('Seneca'));
+    // console.log('authorInput.value =', authorInput);
+    // fireEvent.change(sourceInput, { target: { value: 'On Anger' } });
+    // fireEvent.change(quoteInput, { target: { value: 'The greatest remedy for anger is postponement' } });
+
+
+    // expect(authorInput.value).toBe('Seneca');
+    // expect(sourceInput.value).toBe('On Anger');
+    // expect(quoteInput.value).toBe('The greatest remedy for anger is postponement');
+
+    // fireEvent.click(submitButton)
+
+    // await waitFor(() => {
+    //     expect(authorInput.value).toBe("");
+    //     expect(sourceInput.value).toBe("");
+    //     expect(quoteInput.value).toBe("");
+    // })
+});
+
+
+
+
+
+
+
+// ------------------------------------------------------------------
+
+// test('Testing if data/quotes get rendered', async () => {
+//     render(<App />); // Fails with App and Form
+//     // render(<Form
+//     //     quotes={[]}
+//     //     formData={{}}
+//     // />);
+
+//     const button = await screen.getByRole(button);
+//     // userEvent.click(button);
+//     // expect(screen.getAllByTestId('banana')).toHaveLength(3);
+//     screen.debug()
+// });
+
+
+// ------------------------------------------------------------------
+
+
+
+
 
 
 
@@ -209,3 +310,66 @@ It is not people's actions that trouble us, but our judgements of them, because 
 
 
   // _____________
+
+
+
+
+
+
+
+
+
+
+
+// Could not get this one to work.***
+// test('mocking input', () => {
+
+//     const fakeQuotes = jest.fn(() => {
+//         return 'This is FAKE!'
+//     });
+
+//     const fakeSubmitHandler = jest.fn(() => {
+//         return 'This is FaKE!'
+//     });
+
+//     const fakeSetFormData = jest.fn(() => {
+//         return 'This is FAKE!'
+//     });
+
+//     const fakeFormData = jest.fn(() => {
+//         return 'This is FAKE!'
+//     });
+
+//     const fakeSetQuotes = jest.fn(() => {
+//         return 'This is FaaaAKE!'
+//     });
+
+//     render(<App
+//         // quotes={fakeQuotes}
+//         // formData={fakeFormData}
+//         submitHandler={fakeSubmitHandler}
+//     // setFormData={fakeSetFormData}
+//     // setQuotes={fakeSetQuotes}
+//     />);
+
+//     const button = screen.getByRole(/button/i); // button is a role.
+//     fireEvent.click(button);
+//     // userEvent.click(button);
+//     // userEvent.click(button);
+//     expect(button).toHaveBeenCalledTimes(1);
+
+//     console.log('@@@@@@@@@@@@', fakeFormData.mock);
+// })
+
+// --------------------------
+
+
+
+it('should render a list of quote cards when isLoading is false', async () => {
+    render(<App />);
+    const skeletonLoading = screen.getAllByTestId('skeleton-loading');
+    expect(skeletonLoading).toBeInTheDocument();
+    expect(screen.queryByText(/AuthorMock/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/SourceMock/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/QuoteMock/i)).not.toBeInTheDocument();
+});

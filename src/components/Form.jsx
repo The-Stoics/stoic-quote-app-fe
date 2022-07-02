@@ -72,7 +72,7 @@ export default function Form({
                 onChange={changeHandler}
             />
 
-            <button type="submit" className="btn hover" data-test-id="submit-input">SUBMIT</button>
+            <button type="submit" className="btn hover">SUBMIT</button>
 
             <p style={{ color: 'red' }}>{formValidation}</p>
 
