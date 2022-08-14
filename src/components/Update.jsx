@@ -9,6 +9,7 @@ export default function Update({
     setFormData,
 }) {
 
+
     const deleteQuote = (id) => {
         console.log('deleteQuote', quotes);
         axios
