@@ -282,6 +282,7 @@ textarea {
         padding-top: 1.4rem;
         margin-bottom: 2rem;
         padding-bottom: 1.5rem;
+        border-radius: 0;
     }
 
     * {
@@ -294,6 +295,7 @@ textarea {
     }
 
     .form {
+        border-radius: 0;
         background-color: #cecdd3ab;
         padding-bottom: 0;
     }
